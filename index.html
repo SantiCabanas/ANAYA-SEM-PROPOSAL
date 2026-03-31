@@ -3,268 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANAYA - Digital Growth & SEM Proposal</title>
+    <title>Digital Growth Proposal | ANAYA x Loop Development</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
     <style>
-        /* Color Palette Settings */
+        /* ================= VARIABLES & RESET ================= */
         :root {
-            --bg-light: #F7F5F0; /* Off-white / light brown background */
-            --text-main: #333333; /* Dark gray for readability */
-            --accent-purple: #7E57C2; /* Purple for accents */
-            --accent-purple-hover: #5E35B1; /* Darker purple for hover */
-            --maroon-dark: #3A1F24; /* Dark maroon restricted to main headers/logo */
-            --border-color: #E2DFD8;
+            /* ANAYA Color Palette */
+            --bg-page: #F7F5F0;       /* Off-white / light beige */
+            --bg-white: #FFFFFF;      /* Pure white for cards */
+            --bg-gray: #EFECE6;       /* Slightly darker beige for contrast sections */
+            --text-dark: #3A1F24;     /* Dark maroon for main headers */
+            --text-body: #4A4A4A;     /* Dark gray for standard text */
+            --purple: #7E57C2;        /* Elegant purple for accents/buttons */
+            --purple-soft: rgba(126, 87, 194, 0.05);
+            --purple-hover: rgba(126, 87, 194, 0.1);
+            --border: #E8E5DF;
+            --classic-link: #7E57C2;
         }
 
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-page); color: var(--text-body); line-height: 1.6; }
+        .hidden { display: none !important; }
+        a { text-decoration: none; transition: color 0.3s ease; }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background-color: #FFFFFF;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
+        /* ================= HEADER ================= */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 24px 5%; background: var(--bg-page); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
+        .logo-text { font-family: 'Poppins', sans-serif; font-size: 1.2rem; color: var(--text-dark); font-weight: 600;}
+        .header-right { display: flex; align-items: center; gap: 30px; }
+        nav ul { list-style: none; display: flex; gap: 25px; }
+        nav ul li a { color: var(--text-body); font-size: 0.95rem; font-weight: 500; }
+        nav ul li a:hover, .card a:not(.classic-link) { color: var(--purple); }
+        .lang-switch { display: flex; gap: 10px; font-size: 0.85rem; background: var(--bg-white); padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); }
+        .lang-switch button { background: none; border: none; cursor: pointer; color: var(--text-body); font-weight: 600; font-family: 'Inter', sans-serif; transition: color 0.3s; }
+        .lang-switch button.active { color: var(--purple); }
 
-        /* Header Styles */
-        header {
-            text-align: center;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 40px;
-        }
+        /* ================= HERO ================= */
+        .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: var(--bg-page); padding: 80px 10%; min-height: 40vh; border-bottom: 1px solid var(--border); }
+        .hero img { max-width: 280px; margin-bottom: 30px; }
+        .hero h1 { font-size: 3rem; font-weight: 600; line-height: 1.2; letter-spacing: -1px; color: var(--text-dark); font-family: 'Poppins', sans-serif; }
 
-        .logo-placeholder {
-            max-width: 250px;
-            margin: 0 auto 15px auto;
-        }
+        /* ================= LAYOUT COMMON ================= */
+        section { padding: 100px 10%; }
+        .bg-white { background-color: var(--bg-white); }
+        .section-header { margin-bottom: 60px; max-width: 800px; }
+        .section-header h2 { font-size: 2.2rem; font-weight: 600; margin-bottom: 15px; letter-spacing: -0.5px; color: var(--text-dark); font-family: 'Poppins', sans-serif;}
+        .section-header p { font-size: 1.1rem; color: var(--text-body); }
 
-        .subtitle {
-            font-size: 1.1em;
-            color: var(--text-main);
-            font-style: italic;
-            margin-bottom: 10px;
-        }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: var(--bg-white); padding: 40px 30px; border-radius: 16px; border: 1px solid var(--border); transition: 0.3s ease; display: flex; flex-direction: column; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+        .card:hover { background: var(--purple-soft); border-color: var(--purple); transform: translateY(-5px); }
+        .card h3 { font-size: 1.3rem; color: var(--purple); margin-bottom: 15px; font-weight: 600; }
+        .card p { color: var(--text-body); font-size: 0.95rem; }
+        .card-note { display: block; margin-top: 15px; font-size: 0.85rem; color: #777; font-style: italic; line-height: 1.4; }
+        
+        .classic-link { color: var(--classic-link); text-decoration: underline; font-weight: 600; }
 
-        .proposal-title {
-            color: var(--accent-purple);
-            font-size: 1.4em;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .deliv-budget-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
+        .entregables-col { background: var(--bg-white); border: 1px solid var(--border); border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+        .entregables-col h3 { font-size: 1.5rem; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; color: var(--text-dark); }
+        .entregables-col h3::before { content: ''; display: inline-block; width: 12px; height: 12px; background: var(--purple); border-radius: 50%; }
+        ul.custom-list { list-style: none; }
+        ul.custom-list li { position: relative; padding-left: 25px; margin-bottom: 15px; color: var(--text-body); font-size: 0.95rem; }
+        ul.custom-list li::before { content: '✓'; position: absolute; left: 0; color: var(--purple); font-weight: bold; }
 
-        /* Typography */
-        h1, h2, h3 {
-            color: var(--maroon-dark);
-        }
+        .budget-card { background: var(--bg-gray); border: 1px solid var(--border); border-radius: 16px; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+        .budget-card > h3 { font-size: 1.5rem; margin-bottom: 25px; font-weight: 600; text-align: center; color: var(--text-dark); }
+        .price-breakdown { padding-top: 20px; border-top: 1px solid var(--border); width: 100%; }
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 12px; color: var(--text-body); font-size: 1.05rem;}
+        .price-row.total { margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--text-dark); color: var(--text-dark); font-weight: 700; font-size: 1.8rem; align-items: center; letter-spacing: -0.5px; }
+        .payment-plan { margin-top: 20px; font-size: 0.85rem; color: var(--text-body); border-top: 1px dashed var(--border); padding-top: 15px; }
+        .payment-plan strong { color: var(--text-dark); }
 
-        h2 {
-            border-bottom: 2px solid var(--accent-purple);
-            padding-bottom: 10px;
-            margin-top: 40px;
-        }
+        .timeline-wrapper { margin-top: 60px; background: var(--bg-white); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+        .timeline-wrapper h3 { margin-bottom: 10px; font-size: 1.4rem; color: var(--text-dark); }
+        .timeline-disclaimer { font-size: 0.9rem; color: var(--text-body); margin-bottom: 30px; padding-left: 15px; border-left: 3px solid var(--purple); font-style: italic; line-height: 1.5; }
+        .timeline-flex { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; }
+        .time-block { flex: 1; min-width: 200px; background: var(--bg-gray); border-top: 4px solid var(--purple); padding: 25px 20px; border-radius: 0 0 8px 8px; }
+        .time-block h4 { font-size: 1.1rem; margin-bottom: 5px; color: var(--text-dark); }
+        .promo-subheader { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--purple); font-weight: 700; display: block; margin-bottom: 15px; }
+        .time-block p { font-size: 0.9rem; color: var(--text-body); }
 
-        h3 {
-            color: var(--accent-purple);
-            margin-top: 25px;
-        }
+        .tracking-bar { margin-top: 20px; text-align: center; padding: 15px; border-radius: 8px; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.5px; line-height: 1.5; background: var(--purple-soft); color: var(--text-dark); border: 1px solid var(--border); }
 
-        ul {
-            padding-left: 20px;
-        }
+        /* Legal Info Boxes */
+        .info-box { background: var(--bg-white); border: 1px solid var(--border); border-left: 4px solid var(--text-dark); padding: 30px; border-radius: 8px; margin-top: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+        .info-box h4 { font-size: 1.2rem; margin-bottom: 10px; color: var(--text-dark); }
+        .info-box p { color: var(--text-body); font-size: 0.95rem; }
 
-        li {
-            margin-bottom: 10px;
-        }
+        /* ================= FOOTER ================= */
+        footer { background: var(--text-dark); padding: 40px 10%; text-align: center; color: white; }
+        footer p { color: #E8E5DF; font-size: 0.9rem; }
+        footer a.classic-link { color: var(--purple); text-decoration: none; }
+        footer a.classic-link:hover { color: white; }
+        .footer-contact { margin-top: 15px; font-size: 0.95rem; font-weight: 500; }
 
-        /* Table Styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            background-color: #FFFFFF;
-        }
-
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        th {
-            background-color: var(--accent-purple);
-            color: #FFFFFF;
-            text-transform: uppercase;
-            font-size: 0.9em;
-            letter-spacing: 0.5px;
-        }
-
-        tr:nth-child(even) {
-            background-color: var(--bg-light);
-        }
-
-        /* Footer Styles */
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.9em;
-        }
-
-        .footer-nav {
-            margin-bottom: 15px;
-            color: var(--maroon-dark);
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-purple);
-            color: #FFFFFF;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: var(--accent-purple-hover);
-        }
-
-        /* Highlight box */
-        .highlight-box {
-            background-color: var(--bg-light);
-            border-left: 4px solid var(--accent-purple);
-            padding: 15px 20px;
-            margin: 20px 0;
-            font-style: italic;
+        /* ================= MOBILE OPTIMIZATION ================= */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 20px; padding: 20px 5%; align-items: center; }
+            .header-right { flex-direction: column; gap: 20px; width: 100%; align-items: center; }
+            nav ul { justify-content: center; flex-wrap: wrap; gap: 12px; }
+            .hero { padding: 60px 5%; gap: 20px; }
+            .hero h1 { font-size: 2.2rem; }
+            section { padding: 60px 5%; }
+            .grid-container, .deliv-budget-grid { grid-template-columns: 1fr; gap: 20px; }
+            .budget-card, .entregables-col, .timeline-wrapper { padding: 25px 20px; }
+            .timeline-flex { flex-direction: column; gap: 15px; }
+            .time-block { border-top: none; border-left: 4px solid var(--purple); border-radius: 0 8px 8px 0; padding: 20px 15px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <img src="ANAYALOGO.png" alt="ANAYA Logo" class="logo-placeholder" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x60/3A1F24/FFFFFF?text=ANAYALOGO.png';">
-            <div class="subtitle">A modern movement studio offering Lagree, Pilates, Barre and Yoga</div>
-            <div class="proposal-title">Digital Growth, SEM & Web Optimization Proposal</div>
-        </header>
-
-        <main>
-            <section id="overview">
-                <h2>Project Overview & Scope</h2>
-                <p>As ANAYA transitions into Q2, the strategic focus shifts strictly to <strong>Growth / Momentum</strong>. To support the <strong>"ANAYA IS THE ANSWER"</strong> campaign, this proposal outlines a comprehensive digital ecosystem. We will build a high-converting SEM funnel and provide ongoing web development to ensure all premium events, from the <strong>AMA Madrid</strong> collaboration to the exclusive <strong>SOHO House</strong> rituals, are flawlessly integrated and trackable.</p>
-            </section>
-
-            <section id="phase-1">
-                <h2>Phase 1: SEM & Funnel Setup (Month 1 Sprint)</h2>
-                <div class="highlight-box">
-                    <strong>Timeline:</strong> 2 Weeks <br>
-                    <strong>Scope:</strong> One-time comprehensive setup to establish the digital infrastructure.
-                </div>
-                <p>This phase lays the groundwork for all future campaigns, ensuring we can track user behavior from the first ad click to the final class booking.</p>
+    <header>
+        <div class="header-left">
+            <a href="#" class="logo-text">Loop Development</a>
+        </div>
+        <div class="header-right">
+            <nav>
                 <ul>
-                    <li><strong>Google Ads Launchpad:</strong> Activation of an initial 400€ Google Promo credit to maximize early visibility.</li>
-                    <li><strong>Campaign Structuring:</strong> Building tailored ad groups based on SEO transactional keywords (e.g., "Premium Pilates Ibiza", "Lagree Studio").</li>
-                    <li><strong>Premium Copywriting:</strong> Drafting high-converting headlines and descriptions that reflect the brand's luxurious and exclusive tone.</li>
-                    <li><strong>Audience Segmentation & Targeting:</strong> Configuring demographics to capture your core personas, including the "Island Elite" and the "Second Home Woman".</li>
-                    <li><strong>Bidding Strategy Configuration:</strong> Setting up automated rules to maximize return on ad spend (ROAS) while maintaining premium brand positioning.</li>
-                    <li><strong>Conversion Tagging:</strong> Implementing Google Ads tags to track conversions, web events, and funnel drop-offs (addressing historical drop-off data).</li>
+                    <li><a href="#overview"><span class="lang en">Overview</span><span class="lang es hidden">Resumen</span></a></li>
+                    <li><a href="#setup"><span class="lang en">SEM Setup</span><span class="lang es hidden">Setup SEM</span></a></li>
+                    <li><a href="#campaigns"><span class="lang en">Campaigns & Web</span><span class="lang es hidden">Campañas y Web</span></a></li>
                 </ul>
-            </section>
+            </nav>
+            <div class="lang-switch">
+                <button onclick="setLang('en')" id="btn-en" class="active">ENG</button> | 
+                <button onclick="setLang('es')" id="btn-es">ESP</button>
+            </div>
+        </div>
+    </header>
 
-            <section id="phase-2">
-                <h2>Phase 2: The Growth Engine (4-Month Retainer)</h2>
-                <div class="highlight-box">
-                    <strong>Timeline:</strong> 4 Months (Initial Contract, covering the Q2/Q3 peak season) <br>
-                    <strong>Scope:</strong> Ongoing execution, web updates, and continuous optimization.
-                </div>
-
-                <h3>A) SEM Maintenance & Optimization</h3>
-                <ul>
-                    <li><strong>Ongoing Optimization:</strong> Continuous adjustments to bids, daily budgets, and negative keywords to ensure maximum efficiency.</li>
-                    <li><strong>A/B Testing Execution:</strong> Rigorous testing of ad texts, creative copies, and audience segmentations to find the highest-converting combinations.</li>
-                    <li><strong>Optimization Timeline Document:</strong> A shared, living document logging exactly what changes were made to the campaigns and when.</li>
-                    <li><strong>Strategy Sync:</strong> Weekly or bi-weekly follow-up calls to align on upcoming studio needs.</li>
-                </ul>
-
-                <h3>B) Web Development & Optimization (10 Hours/Month)</h3>
-                <ul>
-                    <li><strong>Offer & Pricing Updates:</strong> Updating the site to reflect Q2 pricing shifts, such as the Lagree First Class moving to 40€.</li>
-                    <li><strong>Event Integration:</strong> Building and updating landing pages for key Q2/Q3 activations, including <strong>AMA Madrid</strong> on April 11th, the <strong>SOHO House</strong> private wellness experience, and the <strong>Jondal July</strong> sessions.</li>
-                    <li><strong>Membership Management:</strong> Implementing web pop-ups and forms to transition the site to a "waiting list only" status for the closed summer memberships.</li>
-                    <li><strong>Media & Content:</strong> Uploading new images, videos, and texts to support the "Whatever Ibiza takes from you, ANAYA gives it back" creative direction.</li>
-                </ul>
-                <p><em>*Note: New, complex web sections from scratch are outside this retainer scope; this covers dynamic updates, pop-ups, minor fixes, and landing page adjustments.</em></p>
-
-                <h3>C) Local Authority: PR & Backlinks</h3>
-                <ul>
-                    <li><strong>Outreach Strategy:</strong> Researching and executing outreach to local Ibiza press and luxury lifestyle publications.</li>
-                    <li><strong>Link Building:</strong> Securing 3 to 5 high-quality backlinks per month to boost organic Domain Authority.</li>
-                </ul>
-
-                <h3>D) Google My Business (GMB) Management</h3>
-                <ul>
-                    <li><strong>Profile Updates:</strong> Publishing 2 to 3 optimized posts per month (scaling up or down based on events, new class schedules, or promo offers).</li>
-                    <li><strong>Review Management:</strong> Weekly monitoring and professional replies to all client reviews to maintain the brand's premium reputation.</li>
-                </ul>
-
-                <h3>E) Advanced Analytics & Insights</h3>
-                <ul>
-                    <li><strong>GA4 + Clarity Integration:</strong> Full tracking of website behavior, including heatmaps and user recordings to see how clients interact with the Mindbody widget.</li>
-                    <li><strong>Funnel Analysis:</strong> Tracking the complete user journey from ad impression to web landing, identifying exactly where and why users drop off before purchasing.</li>
-                    <li><strong>Actionable Reporting:</strong> Delivering monthly insights interpreting the data (CPC, clicks, conversions), testing demographics, and informing future strategies.</li>
-                </ul>
-            </section>
-
-            <section id="deliverables">
-                <h2>Project Deliverables & Timeline Summary</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Phase</th>
-                            <th>Duration</th>
-                            <th>Key Deliverables</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>1. SEM Setup</strong></td>
-                            <td>Weeks 1-2</td>
-                            <td>Keyword matrix, ad copy drafts, funnel tagging, Google Ads launch.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>2. Monthly Retainer</strong></td>
-                            <td>Months 1-4</td>
-                            <td>10h web dev, SEM bid management, 3-5 backlinks, GMB posts, GA4 reporting.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Review & Renew</strong></td>
-                            <td>End of Month 4</td>
-                            <td>Comprehensive Q2/Q3 performance review and Q4 strategy proposal.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-        </main>
-
-        <footer>
-            <div class="footer-nav">Pricing &nbsp;|&nbsp; Planning &nbsp;|&nbsp; Contact</div>
-            <p><strong>WWW.ANAYAGLOBAL.COM</strong></p>
-            <a href="#" class="btn">Approve Proposal</a>
-        </footer>
+    <div class="hero">
+        <img src="ANAYALOGO.png" alt="ANAYA" onerror="this.onerror=null; this.src='https://via.placeholder.com/280x60/3A1F24/F7F5F0?text=ANAYALOGO.png';">
+        <h1>
+            <span class="lang en">Strategic Proposal:<br>SEM Growth & Web Optimization</span>
+            <span class="lang es hidden">Propuesta Estratégica:<br>Crecimiento SEM y Optimización Web</span>
+        </h1>
     </div>
 
+    <section id="overview" class="bg-white">
+        <div class="section-header">
+            <h2><span class="lang en">Project Overview & Scope</span><span class="lang es hidden">Resumen y Alcance del Proyecto</span></h2>
+            <p>
+                <span class="lang en">As ANAYA transitions into Q2, the strategic focus shifts strictly to <strong>Growth / Momentum</strong>. To support the <em>"ANAYA IS THE ANSWER"</em> campaign, this proposal outlines a comprehensive digital ecosystem, building a high-converting SEM funnel and providing ongoing web development.</span>
+                <span class="lang es hidden">A medida que ANAYA transita hacia el Q2, el enfoque estratégico se centra en <strong>Crecimiento / Momentum</strong>. Para apoyar la campaña <em>"ANAYA IS THE ANSWER"</em>, esta propuesta diseña un ecosistema digital integral, construyendo un funnel SEM de alta conversión y proporcionando desarrollo web continuo.</span>
+            </p>
+        </div>
+
+        <div class="grid-container">
+            <div class="card">
+                <h3><span class="lang en">Q2/Q3 Marketing Integration</span><span class="lang es hidden">Integración de Marketing Q2/Q3</span></h3>
+                <p>
+                    <span class="lang en">We will integrate all your new pricing, membership strategies (e.g., waiting lists for summer), and hiring needs directly into the website flow to match your marketing roadmap.</span>
+                    <span class="lang es hidden">Integraremos tus nuevos precios, estrategias de membresía (ej. listas de espera para verano) y necesidades de contratación directamente en el flujo de la web para alinearnos con tu roadmap.</span>
+                </p>
+            </div>
+            <div class="card">
+                <h3><span class="lang en">Targeting the 5 Personas</span><span class="lang es hidden">Enfoque en las 5 Personas</span></h3>
+                <p>
+                    <span class="lang en">From the 'Rooted Local' to the 'Global Tourist', our targeting strategy will ensure the right message reaches the right audience at the perfect time.</span>
+                    <span class="lang es hidden">Desde el 'Rooted Local' hasta el 'Global Tourist', nuestra estrategia de segmentación asegurará que el mensaje correcto llegue a la audiencia adecuada en el momento perfecto.</span>
+                </p>
+            </div>
+            <div class="card">
+                <h3><span class="lang en">Exclusive B2B Events</span><span class="lang es hidden">Eventos B2B Exclusivos</span></h3>
+                <p>
+                    <span class="lang en">Dedicated digital support and landing updates for premium collaborations like <strong>AMA Madrid</strong>, <strong>Jondal July</strong>, and the <strong>SOHO House</strong> private wellness experience.</span>
+                    <span class="lang es hidden">Soporte digital dedicado y actualizaciones web para colaboraciones premium como <strong>AMA Madrid</strong>, <strong>Jondal July</strong>, y la experiencia privada en <strong>SOHO House</strong>.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="setup">
+        <div class="section-header">
+            <h2><span class="lang en">SEM Setup & Analytics Foundation</span><span class="lang es hidden">Setup SEM y Base Analítica</span></h2>
+            <p>
+                <span class="lang en">A 2-week sprint to build the digital infrastructure. We configure the ecosystem so every euro invested is trackable, identifying exact drop-off points (like the 91 declined transactions from Q1).</span>
+                <span class="lang es hidden">Un sprint de 2 semanas para construir la infraestructura digital. Configuramos el ecosistema para que cada euro invertido sea rastreable, identificando puntos de fuga exactos.</span>
+            </p>
+        </div>
+
+        <div class="grid-container">
+            <div class="card">
+                <h3><span class="lang en">1. Promo 400€ + 400€</span><span class="lang es hidden">1. Promo 400€ + 400€</span></h3>
+                <p>
+                    <span class="lang en"><a href="https://business.google.com/intl/en/google-ads/" target="_blank" class="classic-link">Google Partner</a> benefits: By investing 400€ in the first 60 days, Google gifts us another 400€ in ad credit to maximize visibility.</span>
+                    <span class="lang es hidden">Ventajas <a href="https://business.google.com/es/google-ads/" target="_blank" class="classic-link">Google Partner</a>: Al invertir 400€ en los primeros 60 días, Google nos regala otros 400€ en crédito publicitario.</span>
+                </p>
+            </div>
+            <div class="card">
+                <h3><span class="lang en">2. Campaign Structuring</span><span class="lang es hidden">2. Estructuración de Campaña</span></h3>
+                <p>
+                    <span class="lang en">We build campaigns based on SEO transactional keywords (e.g., "Premium Pilates Ibiza") and draft premium ad copy reflecting the "No compromise" luxury positioning.</span>
+                    <span class="lang es hidden">Creamos campañas basadas en keywords transaccionales (ej. "Premium Pilates Ibiza") y redactamos copies que reflejan el posicionamiento de lujo "No compromise".</span>
+                </p>
+            </div>
+            <div class="card">
+                <h3><span class="lang en">3. Funnel Tagging</span><span class="lang es hidden">3. Etiquetado del Funnel</span></h3>
+                <p>
+                    <span class="lang en">Full implementation of Google Ads Tags and Analytics tracking. We measure everything from the first ad click to the final Mindbody class booking.</span>
+                    <span class="lang es hidden">Implementación completa de etiquetas de Google Ads y Analytics. Medimos todo, desde el primer clic en el anuncio hasta la reserva final en Mindbody.</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="timeline-wrapper">
+            <h3><span class="lang en">SEM Setup Timeline (2 Weeks)</span><span class="lang es hidden">Cronograma de Setup SEM (2 Semanas)</span></h3>
+            <div class="timeline-flex">
+                <div class="time-block">
+                    <h4><span class="lang en">Week 1</span><span class="lang es hidden">Semana 1</span></h4>
+                    <span class="promo-subheader"><span class="lang en">Analytics & Architecture</span><span class="lang es hidden">Analítica y Arquitectura</span></span>
+                    <p><span class="lang en">GA4 integration, tracking setup, Mindbody flow analysis, and keyword matrix generation.</span><span class="lang es hidden">Integración GA4, configuración de tracking, análisis del flujo de Mindbody y generación de matriz de keywords.</span></p>
+                </div>
+                <div class="time-block">
+                    <h4><span class="lang en">Week 2</span><span class="lang es hidden">Semana 2</span></h4>
+                    <span class="promo-subheader"><span class="lang en">Design & Activation</span><span class="lang es hidden">Diseño y Activación</span></span>
+                    <p><span class="lang en">Ad copywriting, audience segmentation, bidding strategy configuration, and final launch.</span><span class="lang es hidden">Redacción de anuncios, segmentación de audiencia, configuración de estrategia de pujas y lanzamiento.</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="deliv-budget-grid">
+            <div class="entregables-col">
+                <h3><span class="lang en">Deliverables</span><span class="lang es hidden">Entregables</span></h3>
+                <ul class="custom-list">
+                    <li><span class="lang en"><strong>Analytics Setup:</strong> Final configuration of GA4, GTM, and Ads Funnel.</span><span class="lang es hidden"><strong>Setup Analítico:</strong> Configuración final de GA4, GTM y Funnel de Ads.</span></li>
+                    <li><span class="lang en"><strong>Campaign Structure:</strong> Advanced segmentation and configured bidding strategy.</span><span class="lang es hidden"><strong>Estructura de Campaña:</strong> Segmentación avanzada y estrategia de pujas.</span></li>
+                    <li><span class="lang en"><strong>Ad Copies:</strong> Premium texts designed for A/B testing.</span><span class="lang es hidden"><strong>Ad Copies:</strong> Textos premium diseñados para testeo A/B.</span></li>
+                </ul>
+            </div>
+            <div class="budget-card">
+                <h3><span class="lang en">Setup Budget</span><span class="lang es hidden">Presupuesto Setup</span></h3>
+                <div class="price-breakdown">
+                    <div class="price-row"><span><span class="lang en">Subtotal</span><span class="lang es hidden">Base Imponible</span></span><span>600,00€</span></div>
+                    <div class="price-row"><span><span class="lang en">VAT (21%)</span><span class="lang es hidden">IVA (21%)</span></span><span>126,00€</span></div>
+                    <div class="price-row total"><span>Total</span><span>726,00€</span></div>
+                </div>
+                <div class="payment-plan">
+                    <span class="lang en"><strong>Payment plan:</strong> Single payment upon project activation (One-off fee).</span>
+                    <span class="lang es hidden"><strong>Forma de pago:</strong> Pago único a la activación del proyecto (Pago puntual).</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="campaigns" class="bg-white">
+        <div class="section-header">
+            <h2><span class="lang en">SEM Campaigns & Web Retainer</span><span class="lang es hidden">Campañas SEM y Retainer Web</span></h2>
+            <p>
+                <span class="lang en">The Growth Engine. A monthly retainer covering ongoing SEM optimization, web updates for your new Q2/Q3 offers, and local digital PR.</span>
+                <span class="lang es hidden">El Motor de Crecimiento. Un retainer mensual que cubre optimización SEM continua, actualizaciones web para tus ofertas Q2/Q3 y PR digital local.</span>
+            </p>
+        </div>
+
+        <div class="grid-container">
+            <div class="card">
+                <h3><span class="lang en">1. SEM Maintenance</span><span class="lang es hidden">1. Mantenimiento SEM</span></h3>
+                <p>
+                    <span class="lang en">Ongoing bid, budget, and keyword optimization. We execute strict A/B testing on ad copies (e.g., Intro Offers vs. Pack Elite) to find the most profitable segments.</span>
+                    <span class="lang es hidden">Optimización continua de pujas, presupuestos y keywords. Ejecutamos Test A/B estrictos en textos de anuncios para encontrar los segmentos más rentables.</span>
+                </p>
+            </div>
+            <div class="card">
+                <h3><span class="lang en">2. Web Development (10h/mo)</span><span class="lang es hidden">2. Desarrollo Web (10h/mes)</span></h3>
+                <p>
+                    <span class="lang en">Updating texts, images, and prices. Adding popups for waitlists, integrating SOHO House/Madrid events, and updating hiring pages to support your growing class schedule.</span>
+                    <span class="lang es hidden">Actualización de textos, imágenes y precios. Añadimos popups para listas de espera, integramos eventos de SOHO House y actualizamos la página de contratación.</span>
+                </p>
+            </div>
+            <div class="card">
+                <h3><span class="lang en">3. PR, GMB & Backlinks</span><span class="lang es hidden">3. PR, GMB y Backlinks</span></h3>
+                <p>
+                    <span class="lang en">2-3 Google My Business posts monthly promoting events. Active PR outreach to secure 3-5 local/luxury backlinks, boosting your organic Domain Authority.</span>
+                    <span class="lang es hidden">2-3 posts mensuales en Google My Business. PR activo para conseguir 3-5 backlinks en prensa local/de lujo, mejorando tu Autoridad de Dominio orgánica.</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="timeline-wrapper">
+            <h3><span class="lang en">Growth Timeline (Initial 4-Month Plan)</span><span class="lang es hidden">Cronograma de Crecimiento (Plan Inicial de 4 Meses)</span></h3>
+            <div class="timeline-disclaimer">
+                <span class="lang en">Note: We recommend an initial 4-month commitment to fully leverage the Google Promo timeframe and cover the peak Q2/Q3 transition.</span>
+                <span class="lang es hidden">Nota: Recomendamos un compromiso inicial de 4 meses para aprovechar al máximo el tiempo de la Promo de Google y cubrir el pico de transición Q2/Q3.</span>
+            </div>
+            <div class="timeline-flex">
+                <div class="time-block">
+                    <h4><span class="lang en">Month 1</span><span class="lang es hidden">Mes 1</span></h4>
+                    <span class="promo-subheader"><span class="lang en">Launch & Promo Start</span><span class="lang es hidden">Lanzamiento e Inicio Promo</span></span>
+                    <p><span class="lang en">Initial ad spend (400€ target), web pricing updates, and first batch of backlinks.</span><span class="lang es hidden">Gasto publicitario inicial (objetivo 400€), actualización de precios en web y primeros backlinks.</span></p>
+                </div>
+                <div class="time-block">
+                    <h4><span class="lang en">Month 2</span><span class="lang es hidden">Mes 2</span></h4>
+                    <span class="promo-subheader"><span class="lang en">Promo Validation & Scale</span><span class="lang es hidden">Validación Promo y Escala</span></span>
+                    <p><span class="lang en">Google applies the 400€ credit. A/B testing scales up based on first month's data.</span><span class="lang es hidden">Google aplica el crédito de 400€. El Test A/B escala basándose en los datos del primer mes.</span></p>
+                </div>
+                <div class="time-block">
+                    <h4><span class="lang en">Months 3 - 4</span><span class="lang es hidden">Meses 3 - 4</span></h4>
+                    <span class="promo-subheader"><span class="lang en">Summer Momentum</span><span class="lang es hidden">Momentum de Verano</span></span>
+                    <p><span class="lang en">Using free credit to dominate high-season search terms. Full pivot to "Waiting List" web strategy.</span><span class="lang es hidden">Uso de crédito gratuito para dominar términos de temporada alta. Pivote completo a estrategia web de "Lista de Espera".</span></p>
+                </div>
+            </div>
+            <div class="tracking-bar">
+                <span class="lang en">Monthly reporting (GA4 + Clarity) and weekly/bi-weekly follow-up calls included throughout the retainer.</span>
+                <span class="lang es hidden">Reportes mensuales (GA4 + Clarity) y llamadas de seguimiento semanales/quincenales incluidas durante todo el retainer.</span>
+            </div>
+        </div>
+
+        <div class="deliv-budget-grid">
+            <div class="entregables-col">
+                <h3><span class="lang en">Monthly Deliverables</span><span class="lang es hidden">Entregables Mensuales</span></h3>
+                <ul class="custom-list">
+                    <li><span class="lang en"><strong>Web Development:</strong> 10 hours of updates, events, and dynamic components.</span><span class="lang es hidden"><strong>Desarrollo Web:</strong> 10 horas de actualizaciones, eventos y componentes dinámicos.</span></li>
+                    <li><span class="lang en"><strong>SEM Optimization:</strong> Optimization timeline doc, bid adjustments, and ad tests.</span><span class="lang es hidden"><strong>Optimización SEM:</strong> Doc de timeline de optimización, ajustes de puja y tests de anuncios.</span></li>
+                    <li><span class="lang en"><strong>Local Authority:</strong> 3-5 quality backlinks + 2-3 GMB updates.</span><span class="lang es hidden"><strong>Autoridad Local:</strong> 3-5 backlinks de calidad + 2-3 actualizaciones en GMB.</span></li>
+                    <li><span class="lang en"><strong>Insights Report:</strong> Interpretation of GA4 data, conversion rates, and user drop-offs.</span><span class="lang es hidden"><strong>Reporte de Insights:</strong> Interpretación de datos GA4, tasas de conversión y fugas de usuarios.</span></li>
+                </ul>
+            </div>
+            <div class="budget-card">
+                <h3><span class="lang en">Monthly Budget</span><span class="lang es hidden">Presupuesto Mensual</span></h3>
+                <div class="price-breakdown">
+                    <div class="price-row"><span><span class="lang en">Subtotal</span><span class="lang es hidden">Base Imponible</span></span><span>650,00€ / <span class="lang en">mo</span><span class="lang es hidden">mes</span></span></div>
+                    <div class="price-row"><span><span class="lang en">VAT (21%)</span><span class="lang es hidden">IVA (21%)</span></span><span>136,50€ / <span class="lang en">mo</span><span class="lang es hidden">mes</span></span></div>
+                    <div class="price-row total"><span>Total</span><span>786,50€ / <span class="lang en">mo</span><span class="lang es hidden">mes</span></span></div>
+                </div>
+                <div class="payment-plan">
+                    <span class="lang en"><strong>Payment plan:</strong> Monthly in arrears (invoiced the last week of each month).</span>
+                    <span class="lang es hidden"><strong>Forma de pago:</strong> Mensualidad vencida (facturada la última semana de cada mes).</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="disclaimers">
+        <div class="section-header">
+            <h2><span class="lang en">Terms & Clarifications</span><span class="lang es hidden">Términos y Aclaraciones</span></h2>
+        </div>
+        <div class="info-box">
+            <ul class="custom-list">
+                <li>
+                    <strong style="color: var(--text-dark);"><span class="lang en">Ad Spend Excluded:</span><span class="lang es hidden">Inversión Publicitaria Excluida:</span></strong> 
+                    <span class="lang en">This proposal covers agency management fees. Direct investment in Google Ads is billed directly by Google to the client's payment method.</span>
+                    <span class="lang es hidden">Esta propuesta cubre los honorarios de gestión de agencia. La inversión directa en Google Ads se factura directamente por Google al método de pago del cliente.</span>
+                </li>
+                <li>
+                    <strong style="color: var(--text-dark);"><span class="lang en">Web Development Scope:</span><span class="lang es hidden">Alcance del Desarrollo Web:</span></strong> 
+                    <span class="lang en">The 10 monthly hours cover updates, media changes, popups, and integrations (e.g., SOHO House, Jondal July). Completely new, complex web sections built from scratch are outside this scope and would be budgeted separately.</span>
+                    <span class="lang es hidden">Las 10 horas mensuales cubren actualizaciones, cambios de media, popups e integraciones (ej. SOHO House). Secciones web completamente nuevas y complejas desde cero están fuera de este alcance y se presupuestarían aparte.</span>
+                </li>
+                <li>
+                    <strong style="color: var(--text-dark);"><span class="lang en">Data Privacy:</span><span class="lang es hidden">Privacidad de Datos:</span></strong> 
+                    <span class="lang en">The client must ensure their Privacy and Cookie Policies are up to date to comply with GDPR regarding ad tracking and lead capture.</span>
+                    <span class="lang es hidden">El cliente debe asegurar que su Política de Privacidad y Cookies esté actualizada para cumplir con el RGPD en cuanto a seguimiento de anuncios y captación de leads.</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>
+            <span class="lang en">&copy; 2026 <a href="https://loopdev.es/" target="_blank" class="classic-link">Loop Development</a>. Proposal prepared for ANAYA.</span>
+            <span class="lang es hidden">&copy; 2026 <a href="https://loopdev.es/" target="_blank" class="classic-link">Loop Development</a>. Propuesta preparada para ANAYA.</span>
+        </p>
+        <div class="footer-contact">santiago@loopdev.es - (+34) 620 863 923</div>
+    </footer>
+
+    <script>
+        function setLang(lang) {
+            document.getElementById('btn-en').classList.remove('active');
+            document.getElementById('btn-es').classList.remove('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+            
+            document.querySelectorAll('.lang').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.lang.' + lang).forEach(el => el.classList.remove('hidden'));
+        }
+    </script>
 </body>
 </html>
