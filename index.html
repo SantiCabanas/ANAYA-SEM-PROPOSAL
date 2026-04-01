@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Growth Proposal | ANAYA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* ================= VARIABLES & RESET ================= */
         :root {
-            /* New Custom Palette */
-            --bg-base: #f9f1e7;       /* Light background */
-            --bg-white: #ffffff;      /* Pure white */
+            /* Strict Custom Palette */
+            --bg-base: #f9f1e7;       /* Light beige for page, header, footer */
+            --bg-white: #ffffff;      /* Pure white for hero and cards */
             --bg-gray: #f9f9f9;       /* Light gray for secondary elements */
-            --text-headers: #26150E;  /* Brown */
-            --text-body: #333333;     /* Dark gray/black for readability */
-            --accent: #7d0038;        /* Reddish purple */
-            --accent-hover: #5a0028;  /* Darker reddish purple */
+            --text-headers: #26150E;  /* Brown for headers/logos */
+            --text-body: #333333;     /* Dark gray/black for body text */
+            --accent: #7d0038;        /* Reddish purple for accents */
+            --accent-hover: #5a0028;  
             --border: #e2e2e2;
         }
 
@@ -40,17 +40,32 @@
         }
         .hover-3d:hover {
             transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 15px 35px rgba(38, 21, 14, 0.1);
+            box-shadow: 0 15px 35px rgba(38, 21, 14, 0.08);
+        }
+
+        /* ================= LAYOUT WRAPPER ================= */
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         /* ================= HEADER & MOBILE MENU ================= */
         header { 
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 20px 5%; background: var(--bg-base); 
+            background: var(--bg-base); 
+            padding: 20px 5%; 
             position: sticky; top: 0; z-index: 100; 
             box-shadow: 0 2px 10px rgba(0,0,0,0.03); 
         }
-        .logo img { max-height: 40px; }
+        .logo-text { 
+            font-family: 'Poppins', sans-serif; 
+            font-size: 1.4rem; 
+            font-weight: 600; 
+            color: var(--text-headers); 
+        }
         
         /* Desktop Nav */
         .desktop-nav { display: flex; align-items: center; gap: 30px; }
@@ -74,20 +89,32 @@
             transition: right 0.4s ease;
         }
         .mobile-menu.open { right: 0; }
+        .close-menu { position: absolute; top: 20px; left: 5%; font-size: 2.5rem; color: var(--text-headers); background: none; border: none; cursor: pointer; font-family: sans-serif; line-height: 1; }
         .mobile-menu ul { list-style: none; text-align: center; margin-bottom: 30px; }
         .mobile-menu ul li { margin: 20px 0; }
         .mobile-menu ul li a { font-size: 1.5rem; color: var(--text-headers); font-weight: 600; }
 
         /* ================= HERO ================= */
         .hero { 
-            display: flex; align-items: center; justify-content: space-between; 
-            background: var(--bg-white); padding: 80px 10%; min-height: 50vh; 
-            gap: 40px; border-bottom: 1px solid var(--border);
+            background: var(--bg-white); 
+            padding: 80px 5%; 
+            min-height: 45vh; 
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
         }
-        .hero-left { flex: 1; display: flex; justify-content: center; }
-        .hero-left img { max-width: 250px; width: 100%; }
-        .hero-right { flex: 1.5; }
-        .hero-right h1 { font-size: 3rem; font-weight: 700; line-height: 1.2; letter-spacing: -1px; color: var(--text-headers); font-family: 'Poppins', sans-serif; }
+        .hero .wrapper { align-items: center; }
+        .hero-left { flex: 1; display: flex; justify-content: flex-start; }
+        .hero-left img { max-width: 400px; width: 100%; }
+        .hero-right { flex: 1.2; display: flex; justify-content: flex-end; text-align: right; }
+        .hero-right h1 { 
+            font-size: 2.8rem; 
+            font-weight: 400; /* Less bold */
+            line-height: 1.3; 
+            color: var(--text-headers); 
+            font-family: 'Poppins', sans-serif; 
+            max-width: 550px; 
+        }
 
         /* ================= LAYOUT COMMON ================= */
         section { padding: 100px 10%; }
@@ -95,27 +122,45 @@
         .section-header h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 15px; letter-spacing: -0.5px; color: var(--text-headers); font-family: 'Poppins', sans-serif;}
         .section-header p { font-size: 1.1rem; color: var(--text-body); }
 
+        /* Standard Grid */
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .card { background: var(--bg-white); padding: 40px 30px; border-radius: 12px; border: 1px solid var(--border); display: flex; flex-direction: column; }
         .card h3 { font-size: 1.3rem; color: var(--accent); margin-bottom: 15px; font-weight: 600; }
         .card p { color: var(--text-body); font-size: 0.95rem; }
 
+        /* ================= MONTHLY SCOPE GRID (2x2) ================= */
+        .monthly-scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+        .scope-card { 
+            background: var(--bg-white); 
+            padding: 40px; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03); 
+            border: 1px solid var(--border); 
+            position: relative; 
+            overflow: hidden; 
+        }
+        /* Dashed red top border */
+        .scope-card::before { 
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; 
+            background: repeating-linear-gradient(90deg, var(--accent), var(--accent) 15px, transparent 15px, transparent 25px); 
+        }
+        .scope-card h3 { font-size: 1.4rem; color: var(--text-headers); margin-bottom: 25px; font-family: 'Poppins', sans-serif; }
+        .scope-card ul { list-style: none; padding-left: 0; }
+        .scope-card ul li { position: relative; padding-left: 20px; margin-bottom: 15px; color: var(--text-body); font-size: 0.95rem; }
+        .scope-card ul li::before { content: '-'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+
         /* ================= TIMELINE SECTION ================= */
         .timeline-wrapper { margin-top: 60px; background: var(--bg-white); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 5px 20px rgba(0,0,0,0.02); }
         .timeline-wrapper h3 { margin-bottom: 10px; font-size: 1.4rem; color: var(--text-headers); }
-        
         .timeline-disclaimer { font-size: 0.9rem; color: var(--text-body); margin-bottom: 30px; padding-left: 15px; border-left: 3px solid var(--accent); font-style: italic; line-height: 1.5; }
         
         .timeline-flex { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 10px; }
         .time-block { flex: 1; min-width: 220px; background: var(--bg-gray); border-top: 4px solid var(--accent); padding: 25px 20px; border-radius: 0 0 8px 8px; display: flex; flex-direction: column; }
-        .time-block.pause-block { border-top-color: #666; background: #f0f0f0; }
+        .time-block.pause-block { border-top-color: #999; background: #f0f0f0; }
         .time-block h4 { font-size: 1.1rem; margin-bottom: 5px; color: var(--text-headers); }
         .promo-subheader { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent); font-weight: 700; display: block; margin-bottom: 15px; }
         .time-block.pause-block .promo-subheader { color: #666; }
         .time-block p { font-size: 0.9rem; color: var(--text-body); }
-
-        .recurring-note { margin-top: 25px; padding: 15px; background: var(--bg-base); border-radius: 8px; font-size: 0.9rem; color: var(--text-headers); border: 1px solid var(--border); text-align: center; }
-        .recurring-note strong { color: var(--accent); }
 
         .tracking-bar { margin-top: 25px; text-align: center; padding: 15px 20px; border-radius: 8px; font-size: 0.95rem; font-weight: 600; background: var(--bg-gray); color: var(--text-headers); border: 1px solid var(--border); }
 
@@ -133,54 +178,62 @@
         .price-breakdown { padding-top: 20px; border-top: 1px solid var(--border); width: 100%; }
         .price-row { display: flex; justify-content: space-between; margin-bottom: 12px; color: var(--text-body); font-size: 1.05rem;}
         .price-row.total { margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--text-headers); color: var(--text-headers); font-weight: 700; font-size: 1.8rem; align-items: center; letter-spacing: -0.5px; }
-        .payment-plan { margin-top: 20px; font-size: 0.85rem; color: var(--text-body); border-top: 1px dashed var(--border); padding-top: 15px; }
 
         /* ================= FOOTER ================= */
-        footer { background: var(--bg-base); padding: 40px 10%; text-align: center; border-top: 1px solid var(--border); color: var(--text-headers); }
-        footer p { font-size: 0.9rem; margin-bottom: 10px; }
-        .footer-contact { font-size: 0.95rem; font-weight: 600; color: var(--accent); }
+        footer { background: var(--bg-base); padding: 40px 10%; text-align: center; border-top: 1px solid var(--border); color: var(--text-headers); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+        footer p { font-size: 0.9rem; margin-bottom: 10px; font-weight: 500;}
+        .footer-contact { font-size: 0.95rem; font-weight: 600; color: var(--text-headers); }
 
         /* ================= MOBILE OPTIMIZATION ================= */
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
             .desktop-nav { display: none; }
             .hamburger { display: flex; }
-            .hero { flex-direction: column; text-align: center; padding: 60px 5%; }
+            .hero { padding: 60px 5%; }
+            .hero .wrapper { flex-direction: column; text-align: center; gap: 30px; }
+            .hero-left { justify-content: center; }
+            .hero-right { justify-content: center; text-align: center; }
             .hero-right h1 { font-size: 2.2rem; }
             section { padding: 60px 5%; }
-            .grid-container, .deliv-budget-grid { grid-template-columns: 1fr; gap: 20px; }
+            .grid-container, .monthly-scope-grid, .deliv-budget-grid { grid-template-columns: 1fr; gap: 20px; }
             .timeline-flex { flex-direction: column; gap: 15px; }
             .time-block { border-top: none; border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; }
-            .time-block.pause-block { border-top: none; border-left: 4px solid #666; }
+            .time-block.pause-block { border-top: none; border-left: 4px solid #999; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">
-            <a href="#"><img src="ANAYALOGO.png" alt="ANAYA" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x40/26150E/f9f1e7?text=ANAYA';"></a>
-        </div>
-        
-        <div class="desktop-nav">
-            <nav>
-                <ul>
-                    <li><a href="#overview"><span class="lang en">Overview</span><span class="lang es hidden">Resumen</span></a></li>
-                    <li><a href="#setup"><span class="lang en">SEM Setup</span><span class="lang es hidden">Setup SEM</span></a></li>
-                    <li><a href="#maintenance"><span class="lang en">Maintenance & Web</span><span class="lang es hidden">Mantenimiento y Web</span></a></li>
-                </ul>
-            </nav>
-            <div class="lang-switch">
-                <button onclick="setLang('en')" id="btn-en-desktop" class="active">ENG</button> | 
-                <button onclick="setLang('es')" id="btn-es-desktop">ESP</button>
+        <div class="wrapper">
+            <div class="logo">
+                <a href="#" class="logo-text">Loop Development</a>
             </div>
-        </div>
+            
+            <div class="desktop-nav">
+                <nav>
+                    <ul>
+                        <li><a href="#overview"><span class="lang en">Overview</span><span class="lang es hidden">Resumen</span></a></li>
+                        <li><a href="#setup"><span class="lang en">SEM Setup</span><span class="lang es hidden">Setup SEM</span></a></li>
+                        <li><a href="#maintenance"><span class="lang en">Maintenance & Web</span><span class="lang es hidden">Mantenimiento y Web</span></a></li>
+                    </ul>
+                </nav>
+                <div class="lang-switch">
+                    <button onclick="setLang('en')" id="btn-en-desktop" class="active">ENG</button> | 
+                    <button onclick="setLang('es')" id="btn-es-desktop">ESP</button>
+                </div>
+            </div>
 
-        <button class="hamburger" id="hamburger-btn">
-            <span></span><span></span><span></span>
-        </button>
+            <button class="hamburger" id="hamburger-btn">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </header>
 
     <div class="mobile-menu" id="mobile-menu">
+        <button class="close-menu" id="close-menu-btn">&times;</button>
+        <div class="logo" style="margin-bottom: 40px;">
+            <a href="#" class="logo-text">Loop Development</a>
+        </div>
         <nav>
             <ul>
                 <li><a href="#overview" class="mobile-link"><span class="lang en">Overview</span><span class="lang es hidden">Resumen</span></a></li>
@@ -195,14 +248,16 @@
     </div>
 
     <div class="hero fade-in-up">
-        <div class="hero-left">
-            <img src="ANAYALOGO.png" alt="ANAYA" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x60/26150E/FFFFFF?text=ANAYA';">
-        </div>
-        <div class="hero-right">
-            <h1>
-                <span class="lang en">Strategic Proposal:<br>SEM Growth & Web Optimization</span>
-                <span class="lang es hidden">Propuesta Estratégica:<br>Crecimiento SEM y Optimización Web</span>
-            </h1>
+        <div class="wrapper">
+            <div class="hero-left">
+                <img src="ANAYALOGO.png" alt="ANAYA" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x80/26150E/FFFFFF?text=ANAYA';">
+            </div>
+            <div class="hero-right">
+                <h1>
+                    <span class="lang en">Strategic Proposal:<br>SEM Growth & Web Optimization</span>
+                    <span class="lang es hidden">Propuesta Estratégica:<br>Crecimiento SEM y Optimización Web</span>
+                </h1>
+            </div>
         </div>
     </div>
 
@@ -224,13 +279,6 @@
                 </p>
             </div>
             <div class="card hover-3d">
-                <h3><span class="lang en">Targeting the 5 Personas</span><span class="lang es hidden">Enfoque en las 5 Personas</span></h3>
-                <p>
-                    <span class="lang en">From the 'Rooted Local' to the 'Global Tourist', our targeting strategy will ensure the right message reaches the right audience at the perfect time.</span>
-                    <span class="lang es hidden">Desde el 'Rooted Local' hasta el 'Global Tourist', nuestra estrategia de segmentación asegurará que el mensaje correcto llegue a la audiencia adecuada en el momento perfecto.</span>
-                </p>
-            </div>
-            <div class="card hover-3d">
                 <h3><span class="lang en">Exclusive B2B Events</span><span class="lang es hidden">Eventos B2B Exclusivos</span></h3>
                 <p>
                     <span class="lang en">Dedicated digital support and landing updates for premium collaborations like <strong>AMA Madrid</strong>, <strong>Jondal July</strong>, and the <strong>SOHO House</strong> private wellness experience.</span>
@@ -242,7 +290,7 @@
 
     <section id="setup" style="background: var(--bg-white);" class="fade-in-up">
         <div class="section-header">
-            <h2><span class="lang en">SEM Setup & Analytics Foundation</span><span class="lang es hidden">Setup SEM y Base Analítica</span></h2>
+            <h2><span class="lang en">SEM Setup Foundation</span><span class="lang es hidden">Base de Setup SEM</span></h2>
             <p>
                 <span class="lang en">A sprint to build the digital infrastructure. We configure the ecosystem so every euro invested is trackable, identifying exact drop-off points (like the 91 declined transactions from Q1).</span>
                 <span class="lang es hidden">Un sprint para construir la infraestructura digital. Configuramos el ecosistema para que cada euro invertido sea rastreable, identificando puntos de fuga exactos.</span>
@@ -282,10 +330,6 @@
                     <div class="price-row"><span><span class="lang en">VAT (21%)</span><span class="lang es hidden">IVA (21%)</span></span><span>52,50€</span></div>
                     <div class="price-row total"><span>Total</span><span>302,50€</span></div>
                 </div>
-                <div class="payment-plan">
-                    <span class="lang en"><strong>Payment plan:</strong> Single payment upon project activation.</span>
-                    <span class="lang es hidden"><strong>Forma de pago:</strong> Pago único a la activación del proyecto.</span>
-                </div>
             </div>
         </div>
     </section>
@@ -294,16 +338,67 @@
         <div class="section-header">
             <h2><span class="lang en">SEM Campaigns & Web Retainer</span><span class="lang es hidden">Campañas SEM y Retainer Web</span></h2>
             <p>
-                <span class="lang en">The Growth Engine. A monthly retainer covering ongoing SEM optimization, web updates, and local digital PR.</span>
-                <span class="lang es hidden">El Motor de Crecimiento. Un retainer mensual que cubre optimización SEM continua, actualizaciones web y PR digital local.</span>
+                <span class="lang en">The Growth Engine. A detailed monthly scope covering ongoing SEM optimization, extensive web updates, tracking, and local digital PR.</span>
+                <span class="lang es hidden">El Motor de Crecimiento. Un alcance mensual detallado que cubre optimización SEM continua, actualizaciones web extensas, tracking y PR digital local.</span>
             </p>
+        </div>
+
+        <h3 style="color: var(--text-headers); font-family: 'Poppins', sans-serif; font-size: 1.8rem; margin-bottom: 20px;">
+            <span class="lang en">Scope of Monthly Work</span>
+            <span class="lang es hidden">Alcance de Trabajo Mensual</span>
+        </h3>
+        
+        <div class="monthly-scope-grid">
+            <div class="scope-card hover-3d">
+                <h3><span class="lang en">SEM Maintenance & Optimization</span><span class="lang es hidden">Mantenimiento y Optimización SEM</span></h3>
+                <ul>
+                    <li><span class="lang en">Ongoing bid, budget, and keyword optimization</span><span class="lang es hidden">Optimización continua de pujas, presupuesto y keywords</span></li>
+                    <li><span class="lang en">A/B Testing execution (Testing texts/ad copies and segmentations)</span><span class="lang es hidden">Ejecución de Test A/B (textos, copies y segmentaciones)</span></li>
+                    <li><span class="lang en">Monthly reporting (CPC, Clicks, CR, A/B results)</span><span class="lang es hidden">Reportes mensuales (CPC, Clics, CR, resultados de A/B)</span></li>
+                    <li><span class="lang en">Weekly or bi-weekly follow-up calls</span><span class="lang es hidden">Llamadas de seguimiento semanales o quincenales</span></li>
+                    <li><span class="lang en">Maintaining the "Optimization Timeline" document (logging changes)</span><span class="lang es hidden">Mantenimiento del documento "Timeline de Optimización"</span></li>
+                </ul>
+            </div>
+
+            <div class="scope-card hover-3d">
+                <h3><span class="lang en">Web Development & Updates</span><span class="lang es hidden">Desarrollo y Actualizaciones Web</span></h3>
+                <ul>
+                    <li><span class="lang en">10 hours of updates (images, videos, text, popups)</span><span class="lang es hidden">10 horas de actualizaciones (imágenes, videos, textos, popups)</span></li>
+                    <li><span class="lang en">Adding events, promos, classes, prices, and teachers</span><span class="lang es hidden">Añadir eventos, promos, clases, precios y profesores</span></li>
+                    <li><span class="lang en">Dedicated SOHO House & Madrid integrations</span><span class="lang es hidden">Integraciones dedicadas de SOHO House y Madrid</span></li>
+                    <li><span class="lang en">Quick minor changes and fixes (enhancements)</span><span class="lang es hidden">Arreglos y cambios menores rápidos (mejoras)</span></li>
+                    <li><span class="lang en"><em>Note: Completely new web sections are out of scope</em></span><span class="lang es hidden"><em>Nota: Secciones web completamente nuevas quedan fuera del alcance</em></span></li>
+                </ul>
+            </div>
+
+            <div class="scope-card hover-3d">
+                <h3><span class="lang en">Analytics, Reports & Insights</span><span class="lang es hidden">Analítica, Reportes e Insights</span></h3>
+                <ul>
+                    <li><span class="lang en">GA4 + Clarity: web tracking (including Mindbody drop-offs)</span><span class="lang es hidden">GA4 + Clarity: tracking web (incluyendo fugas en Mindbody)</span></li>
+                    <li><span class="lang en">Funnel Analysis: From ads to web, drop-offs, and conversions</span><span class="lang es hidden">Análisis de Funnel: de anuncios a web, fugas y conversiones</span></li>
+                    <li><span class="lang en">Detailed reports of monthly activity on the website</span><span class="lang es hidden">Reportes detallados de la actividad mensual en la web</span></li>
+                    <li><span class="lang en">Actionable insights and conclusions: interpreting the data</span><span class="lang es hidden">Insights accionables y conclusiones: interpretación de datos</span></li>
+                    <li><span class="lang en">Testing demographics, keywords, and ad copies</span><span class="lang es hidden">Testeo de demografía, keywords y copies de anuncios</span></li>
+                </ul>
+            </div>
+
+            <div class="scope-card hover-3d">
+                <h3><span class="lang en">Local PR, SEO & GMB</span><span class="lang es hidden">PR Local, SEO y GMB</span></h3>
+                <ul>
+                    <li><span class="lang en">Research, outreach, PR/Publicity and strategy</span><span class="lang es hidden">Investigación, outreach, estrategia de PR y publicidad</span></li>
+                    <li><span class="lang en">Acquiring 3-5 backlinks, reaching out to local press</span><span class="lang es hidden">Adquisición de 3-5 backlinks contactando a prensa local</span></li>
+                    <li><span class="lang en">Tracking domain authority</span><span class="lang es hidden">Seguimiento continuo de la autoridad de dominio (DA)</span></li>
+                    <li><span class="lang en">GMB: 2-3 posts based on events, promos, new classes</span><span class="lang es hidden">GMB: 2-3 posts basados en eventos, promos, nuevas clases</span></li>
+                    <li><span class="lang en">GMB: Manage and respond to reviews weekly (enhance)</span><span class="lang es hidden">GMB: Gestión y respuesta a reseñas semanalmente (mejorar)</span></li>
+                </ul>
+            </div>
         </div>
 
         <div class="timeline-wrapper">
             <h3><span class="lang en">SEM Timeline (4 Months)</span><span class="lang es hidden">Cronograma SEM (4 Meses)</span></h3>
             <div class="timeline-disclaimer">
-                <span class="lang en">Note: Time is an estimate. External Google factors may extend actual duration to 5-6 months (depending on daily ad spend or promo validation), but our fees remain strictly capped at the 4 budgeted months.</span>
-                <span class="lang es hidden">Nota: El tiempo es una estimación. Factores externos de Google pueden extender la duración real a 5-6 meses (según gasto diario o validación de promo), pero los honorarios se mantienen cerrados a los 4 meses presupuestados.</span>
+                <span class="lang en">Note: Time is an estimate. External Google factors may extend actual duration to 5-6 months, but our fees remain strictly capped at the 4 budgeted months.</span>
+                <span class="lang es hidden">Nota: El tiempo es una estimación. Factores externos de Google pueden extender la duración real a 5-6 meses, pero los honorarios se mantienen cerrados a los 4 meses presupuestados.</span>
             </div>
             <div class="timeline-flex">
                 <div class="time-block">
@@ -327,11 +422,6 @@
                     <p><span class="lang en">Credit Phase (400€ gift maximizing visibility).</span><span class="lang es hidden">Fase Crédito (400€ regalados maximizando visibilidad).</span></p>
                 </div>
             </div>
-            
-            <div class="recurring-note">
-                <span class="lang en"><strong>Concurrent Monthly Services:</strong> Alongside the SEM timeline above, every month includes 10 hours of Web Development, GMB Profile updates, and active PR & Backlink outreach.</span>
-                <span class="lang es hidden"><strong>Servicios Mensuales Concurrentes:</strong> Paralelamente al cronograma SEM, cada mes incluye 10 horas de Desarrollo Web, actualizaciones de perfil GMB y PR activo para Backlinks.</span>
-            </div>
 
             <div class="tracking-bar">
                 <span class="lang en">Tracking and A/B Testing active during the 4 months, with monthly reports and weekly/bi-weekly calls.</span>
@@ -340,25 +430,18 @@
         </div>
 
         <div class="deliv-budget-grid">
-            <div class="entregables-col">
-                <h3><span class="lang en">Monthly Deliverables</span><span class="lang es hidden">Entregables Mensuales</span></h3>
-                <ul class="custom-list">
-                    <li><span class="lang en"><strong>Web Development:</strong> 10 hours of updates, events (SOHO, Madrid), and dynamic components.</span><span class="lang es hidden"><strong>Desarrollo Web:</strong> 10 horas de actualizaciones, eventos (SOHO, Madrid) y popups.</span></li>
-                    <li><span class="lang en"><strong>SEM Optimization:</strong> Ongoing bid adjustments, and A/B ad tests.</span><span class="lang es hidden"><strong>Optimización SEM:</strong> Ajustes de puja continuos y tests A/B de anuncios.</span></li>
-                    <li><span class="lang en"><strong>Local Authority:</strong> 3-5 quality backlinks + 2-3 GMB updates per month.</span><span class="lang es hidden"><strong>Autoridad Local:</strong> 3-5 backlinks de calidad + 2-3 actualizaciones en GMB por mes.</span></li>
-                    <li><span class="lang en"><strong>Monthly Reporting:</strong> Detailed monthly reports interpreting data, conversions, and user drops.</span><span class="lang es hidden"><strong>Reporte Mensual:</strong> Informes mensuales detallados interpretando datos, conversiones y fugas.</span></li>
-                </ul>
-            </div>
-            <div class="budget-card">
+            <div class="entregables-col" style="visibility: hidden; display: none;">
+                </div>
+            <div class="budget-card" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto; width: 100%;">
                 <h3><span class="lang en">Monthly Budget</span><span class="lang es hidden">Presupuesto Mensual</span></h3>
                 <div class="price-breakdown">
                     <div class="price-row"><span><span class="lang en">Subtotal</span><span class="lang es hidden">Base Imponible</span></span><span>1.100,00€ / <span class="lang en">mo</span><span class="lang es hidden">mes</span></span></div>
                     <div class="price-row"><span><span class="lang en">VAT (21%)</span><span class="lang es hidden">IVA (21%)</span></span><span>231,00€ / <span class="lang en">mo</span><span class="lang es hidden">mes</span></span></div>
                     <div class="price-row total"><span>Total</span><span>1.331,00€ / <span class="lang en">mo</span><span class="lang es hidden">mes</span></span></div>
                 </div>
-                <div class="payment-plan">
-                    <span class="lang en"><strong>Payment plan:</strong> Monthly in arrears for a fixed 4-month scope (even if campaigns extend to month 5).</span>
-                    <span class="lang es hidden"><strong>Forma de pago:</strong> Mensualidad vencida para un alcance fijo de 4 meses (incluso si las campañas se extienden al mes 5).</span>
+                <div class="payment-plan" style="text-align: center; margin-top: 25px;">
+                    <span class="lang en"><strong>Maintenance Plan:</strong> SEM, Web Dev, GMB, PR & Backlinks for a 4-month scope (even if campaigns extend to month 5).</span>
+                    <span class="lang es hidden"><strong>Plan de Mantenimiento:</strong> SEM, Web Dev, GMB, PR & Backlinks por un alcance de 4 meses (incluso si la campaña llega al mes 5).</span>
                 </div>
             </div>
         </div>
@@ -369,13 +452,13 @@
             <span class="lang en">&copy; 2026 Prepared exclusively for ANAYA.</span>
             <span class="lang es hidden">&copy; 2026 Preparado exclusivamente para ANAYA.</span>
         </p>
-        <div class="footer-contact">hello@anayaglobal.com</div>
+        <div class="footer-contact">santiago@loopdev.es</div>
+        <div class="footer-contact">(+34) 620 863 923</div>
     </footer>
 
     <script>
         // Language Toggle
         function setLang(lang) {
-            // Update buttons
             document.getElementById('btn-en-desktop').classList.remove('active');
             document.getElementById('btn-es-desktop').classList.remove('active');
             document.getElementById('btn-en-mobile').classList.remove('active');
@@ -384,40 +467,31 @@
             document.getElementById('btn-' + lang + '-desktop').classList.add('active');
             document.getElementById('btn-' + lang + '-mobile').classList.add('active');
             
-            // Toggle text
             document.querySelectorAll('.lang').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.lang.' + lang).forEach(el => el.classList.remove('hidden'));
         }
 
         // Hamburger Menu Toggle
         const hamburgerBtn = document.getElementById('hamburger-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        hamburgerBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('open');
-            // Animate hamburger to X
-            const spans = hamburgerBtn.querySelectorAll('span');
-            if (mobileMenu.classList.contains('open')) {
-                spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
-            } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden'; // prevent scrolling
+        }
 
-        // Close mobile menu on link click
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        hamburgerBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+
         mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-                const spans = hamburgerBtn.querySelectorAll('span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            });
+            link.addEventListener('click', closeMenu);
         });
 
         // Scroll Animations (Intersection Observer)
@@ -439,7 +513,7 @@
             observer.observe(element);
         });
         
-        // Trigger initial animation for elements already in viewport
+        // Trigger initial animation
         setTimeout(() => {
             document.querySelectorAll('.fade-in-up').forEach(el => {
                 const rect = el.getBoundingClientRect();
