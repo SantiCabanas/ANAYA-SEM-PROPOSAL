@@ -15,7 +15,6 @@
             --text-headers: #26150E;  /* Brown for headers/logos */
             --text-body: #333333;     /* Dark gray/black for body text */
             --accent: #7d0038;        /* Reddish purple for accents */
-            --accent-light: rgba(125, 0, 56, 0.03);
             --border: #e2e2e2;
         }
 
@@ -104,10 +103,24 @@
             display: flex;
             align-items: center;
         }
-        .hero .wrapper { align-items: center; gap: 80px; justify-content: flex-start;}
-        .hero-left { display: flex; justify-content: flex-start; }
+        .hero .wrapper { 
+            justify-content: center; 
+            gap: 100px; /* Big gap between logo and text */
+        }
+        .hero-left { 
+            flex: 0 1 auto; 
+            display: flex; 
+            justify-content: flex-end; 
+        }
         .hero-left img { max-width: 220px; width: 100%; }
-        .hero-right { display: flex; justify-content: flex-start; text-align: left; max-width: 700px;}
+        
+        .hero-right { 
+            flex: 0 1 auto; 
+            display: flex; 
+            justify-content: flex-start; 
+            text-align: left; 
+            max-width: 550px;
+        }
         .hero-right h1 { 
             font-size: 2.2rem; 
             font-weight: 600; 
@@ -129,28 +142,30 @@
         .card h3 { font-size: 1.3rem; color: var(--accent); margin-bottom: 15px; font-weight: 600; }
         .card p { color: var(--text-body); font-size: 0.95rem; }
 
-        /* ================= MONTHLY SCOPE GRID (Add-ons Style) ================= */
-        .monthly-scope-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 40px; }
+        /* ================= MONTHLY SCOPE GRID (2x2 Layout) ================= */
+        .monthly-scope-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; /* Forced 2 columns for a 2x2 look */
+            gap: 40px; 
+            margin-top: 40px; 
+        }
         .scope-card { 
             background: var(--bg-white); 
-            padding: 40px 30px; 
+            padding: 50px 40px; /* More spacious padding */
             border-radius: 12px; 
             border: 1px solid var(--border); 
             border-left: 5px solid var(--accent); 
             position: relative; 
         }
         .scope-card.highlight {
-            grid-column: 1 / -1; /* Spans full width at the bottom */
-            border: 3px solid var(--accent);
-            background: var(--accent-light);
-            text-align: center;
+            border: 2px solid var(--accent);
+            border-left: 6px solid var(--accent);
+            background: #ffffff; /* Pure white background */
         }
         .scope-card h3 { font-size: 1.4rem; color: var(--text-headers); margin-bottom: 25px; font-family: 'Poppins', sans-serif; font-weight: 600; }
         .scope-card ul { list-style: none; padding-left: 0; text-align: left;}
         .scope-card ul li { position: relative; padding-left: 20px; margin-bottom: 15px; color: var(--text-body); font-size: 0.95rem; }
         .scope-card ul li::before { content: '-'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
-        
-        .scope-card.highlight ul { display: inline-block; text-align: left; margin: 0 auto; }
 
         /* ================= TIMELINE SECTION ================= */
         .timeline-wrapper { margin-top: 60px; background: var(--bg-white); padding: 40px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 5px 20px rgba(0,0,0,0.02); }
@@ -196,12 +211,11 @@
             .desktop-nav { display: none; }
             .hamburger { display: flex; }
             .hero { padding: 60px 5%; }
-            .hero .wrapper { flex-direction: column; text-align: center; gap: 30px; justify-content: center;}
+            .hero .wrapper { flex-direction: column; text-align: center; gap: 40px; justify-content: center;}
             .hero-right { justify-content: center; text-align: center; }
             .hero-right h1 { font-size: 2rem; }
             section { padding: 60px 5%; }
             .grid-container, .monthly-scope-grid, .deliv-budget-grid { grid-template-columns: 1fr; gap: 20px; }
-            .scope-card.highlight { grid-column: 1 / -1; }
             .timeline-flex { flex-direction: column; gap: 15px; }
             .time-block { border-top: none; border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; }
             .time-block.pause-block { border-top: none; border-left: 4px solid #999; }
@@ -299,7 +313,7 @@
         <div class="section-header">
             <h2><span class="lang en">SEM Setup Foundation</span><span class="lang es hidden">Base de Setup SEM</span></h2>
             <p>
-                <span class="lang en">A sprint to build the digital infrastructure. We configure the ecosystem so every euro invested is trackable, identifying exact drop-off points (like the 91 declined transactions from Q1).</span>
+                <span class="lang en">A sprint to build the digital infrastructure. We configure the ecosystem so every euro invested is trackable, identifying exact drop-off points.</span>
                 <span class="lang es hidden">Un sprint para construir la infraestructura digital. Configuramos el ecosistema para que cada euro invertido sea rastreable, identificando puntos de fuga exactos.</span>
             </p>
         </div>
@@ -382,19 +396,11 @@
             </div>
 
             <div class="scope-card hover-3d">
-                <h3><span class="lang en">Google My Business / Maps</span><span class="lang es hidden">Google My Business / Maps</span></h3>
+                <h3><span class="lang en">Local PR & GMB</span><span class="lang es hidden">PR Local y GMB</span></h3>
                 <ul>
-                    <li><span class="lang en">Publishing 2-3 targeted posts (events, promos, new classes)</span><span class="lang es hidden">Publicación de 2-3 posts (eventos, promos, clases)</span></li>
+                    <li><span class="lang en">Publishing 2-3 targeted posts (events, promos, classes)</span><span class="lang es hidden">Publicación de 2-3 posts (eventos, promos, clases)</span></li>
                     <li><span class="lang en">Weekly updates of teachers, classes, and studio pictures</span><span class="lang es hidden">Actualizaciones semanales de profesores, clases y fotos</span></li>
-                    <li><span class="lang en">Manage and professionally respond to all reviews weekly</span><span class="lang es hidden">Gestión y respuesta profesional a reseñas semanalmente</span></li>
-                    <li><span class="lang en">Continuous enhancement of local search visibility</span><span class="lang es hidden">Mejora continua de la visibilidad en búsquedas locales</span></li>
-                </ul>
-            </div>
-
-            <div class="scope-card hover-3d">
-                <h3><span class="lang en">Backlinks & Local PR</span><span class="lang es hidden">Backlinks y PR Local</span></h3>
-                <ul>
-                    <li><span class="lang en">Research, outreach, PR/Publicity and strategy execution</span><span class="lang es hidden">Investigación, outreach, estrategia de PR y publicidad</span></li>
+                    <li><span class="lang en">Manage and professionally respond to reviews weekly</span><span class="lang es hidden">Gestión y respuesta profesional a reseñas semanalmente</span></li>
                     <li><span class="lang en">Acquiring 3-5 backlinks by reaching out to local press</span><span class="lang es hidden">Adquisición de 3-5 backlinks contactando a prensa local</span></li>
                     <li><span class="lang en">Continuous tracking of domain authority (DA)</span><span class="lang es hidden">Seguimiento continuo de la autoridad de dominio (DA)</span></li>
                 </ul>
@@ -412,7 +418,7 @@
         </div>
 
         <div class="timeline-wrapper">
-            <h3><span class="lang en">SEM Timeline (4 Months)</span><span class="lang es hidden">Cronograma SEM (4 Meses)</span></h3>
+            <h3><span class="lang en">SEM Timeline (4/5 Months)</span><span class="lang es hidden">Cronograma SEM (4/5 Meses)</span></h3>
             <div class="timeline-flex">
                 <div class="time-block">
                     <h4><span class="lang en">Week 1</span><span class="lang es hidden">Semana 1</span></h4>
