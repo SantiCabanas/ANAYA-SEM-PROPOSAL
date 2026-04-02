@@ -8,12 +8,14 @@
     <style>
         /* ================= VARIABLES & RESET ================= */
         :root {
-            --bg-base: #f9f1e7;       
-            --bg-white: #ffffff;      
-            --bg-gray: #f9f9f9;       
-            --text-headers: #26150E;  
-            --text-body: #333333;     
-            --accent: #7d0038;        
+            /* Strict Custom Palette */
+            --bg-base: #f9f1e7;       /* Light beige for page, header, footer */
+            --bg-white: #ffffff;      /* Pure white for hero and cards */
+            --bg-gray: #f9f9f9;       /* Light gray for secondary elements */
+            --text-headers: #26150E;  /* Brown for headers/logos */
+            --text-body: #333333;     /* Dark gray/black for body text */
+            --accent: #7d0038;        /* Reddish purple for accents */
+            --accent-hover: #5a0028;  
             --accent-light: rgba(125, 0, 56, 0.03);
             --border: #e2e2e2;
         }
@@ -23,7 +25,7 @@
         .hidden { display: none !important; }
         a { text-decoration: none; transition: color 0.3s ease; }
 
-        /* ================= ANIMATIONS ================= */
+        /* ================= ANIMATIONS & 3D EFFECTS ================= */
         .fade-in-up {
             opacity: 0;
             transform: translateY(30px);
@@ -52,7 +54,7 @@
             align-items: center;
         }
 
-        /* ================= HEADER ================= */
+        /* ================= HEADER & MOBILE MENU ================= */
         header { 
             background: var(--bg-base); 
             padding: 20px 5%; 
@@ -67,18 +69,21 @@
             letter-spacing: -0.5px;
         }
         
+        /* Desktop Nav */
         .desktop-nav { display: flex; align-items: center; gap: 30px; }
         .desktop-nav ul { list-style: none; display: flex; gap: 25px; }
         .desktop-nav ul li a { color: var(--text-headers); font-size: 0.95rem; font-weight: 600; }
         .desktop-nav ul li a:hover { color: var(--accent); }
         
         .lang-switch { display: flex; gap: 10px; font-size: 0.85rem; background: var(--bg-white); padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .lang-switch button { background: none; border: none; cursor: pointer; color: var(--text-body); font-weight: 600; font-family: 'Inter', sans-serif; }
+        .lang-switch button { background: none; border: none; cursor: pointer; color: var(--text-body); font-weight: 600; font-family: 'Inter', sans-serif; transition: color 0.3s; }
         .lang-switch button.active { color: var(--accent); }
 
+        /* Hamburger Icon */
         .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; z-index: 102; }
         .hamburger span { width: 25px; height: 3px; background: var(--text-headers); transition: 0.3s; border-radius: 2px; }
 
+        /* Mobile Menu Overlay */
         .mobile-menu {
             position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
             background: var(--bg-base); z-index: 101;
@@ -86,7 +91,10 @@
             transition: right 0.4s ease;
         }
         .mobile-menu.open { right: 0; }
-        .close-menu { position: absolute; top: 20px; left: 5%; font-size: 2.5rem; color: var(--text-headers); background: none; border: none; cursor: pointer; }
+        .close-menu { position: absolute; top: 20px; left: 5%; font-size: 2.5rem; color: var(--text-headers); background: none; border: none; cursor: pointer; font-family: sans-serif; line-height: 1; }
+        .mobile-menu ul { list-style: none; text-align: center; margin-bottom: 30px; }
+        .mobile-menu ul li { margin: 20px 0; }
+        .mobile-menu ul li a { font-size: 1.5rem; color: var(--text-headers); font-weight: 600; }
 
         /* ================= HERO (Group Centered) ================= */
         .hero { 
@@ -114,71 +122,108 @@
             letter-spacing: -0.5px;
         }
 
-        /* ================= SECTIONS ================= */
+        /* ================= LAYOUT COMMON ================= */
         section { padding: 100px 10%; }
         .section-header { margin-bottom: 60px; max-width: 850px; }
-        .section-header h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 15px; color: var(--text-headers); font-family: 'Poppins', sans-serif; }
+        .section-header h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 15px; letter-spacing: -0.5px; color: var(--text-headers); font-family: 'Poppins', sans-serif;}
+        .section-header p { font-size: 1.1rem; color: var(--text-body); }
 
+        /* Standard Grid */
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .card { background: var(--bg-white); padding: 40px 30px; border-radius: 12px; border: 1px solid var(--border); display: flex; flex-direction: column; }
         .card h3 { font-size: 1.3rem; color: var(--accent); margin-bottom: 15px; font-weight: 600; }
+        .card p { color: var(--text-body); font-size: 0.95rem; }
 
-        .monthly-scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+        /* ================= MONTHLY SCOPE GRID (2x2 Layout) ================= */
+        .monthly-scope-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; /* Forced 2 columns for a 2x2 look */
+            gap: 40px; 
+            margin-top: 40px; 
+        }
         .scope-card { 
-            background: var(--bg-white); padding: 50px 40px; border-radius: 12px; 
-            border: 1px solid var(--border); border-left: 5px solid var(--accent); 
+            background: var(--bg-white); 
+            padding: 50px 40px; /* More spacious padding */
+            border-radius: 12px; 
+            border: 1px solid var(--border); 
+            border-left: 5px solid var(--accent); 
+            position: relative; 
         }
         .scope-card.highlight {
-            grid-column: 1 / -1; border: 2px solid var(--accent); border-left: 6px solid var(--accent); background: #ffffff; 
+            grid-column: 1 / -1; /* Spans full width at the bottom */
+            border: 2px solid var(--accent);
+            border-left: 6px solid var(--accent);
+            background: #ffffff; /* Pure white background */
         }
+        .scope-card.highlight h3 { text-align: center; }
+        .scope-card.highlight .ul-wrapper { text-align: center; }
+
         .scope-card h3 { font-size: 1.4rem; color: var(--text-headers); margin-bottom: 25px; font-family: 'Poppins', sans-serif; font-weight: 600; }
-        .scope-card ul { list-style: none; padding-left: 0; }
-        .scope-card ul li { position: relative; padding-left: 20px; margin-bottom: 15px; font-size: 0.95rem; }
+        .scope-card ul { list-style: none; padding-left: 0; text-align: left; display: inline-block;}
+        .scope-card ul li { position: relative; padding-left: 20px; margin-bottom: 15px; color: var(--text-body); font-size: 0.95rem; }
         .scope-card ul li::before { content: '-'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
 
-        /* ================= TIMELINE ================= */
-        .timeline-wrapper { margin-top: 60px; background: var(--bg-white); padding: 40px; border-radius: 12px; border: 1px solid var(--border); }
+        /* ================= TIMELINE SECTION ================= */
+        .timeline-wrapper { margin-top: 60px; background: var(--bg-white); padding: 40px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 5px 20px rgba(0,0,0,0.02); }
         .timeline-wrapper h3 { margin-bottom: 10px; font-size: 1.4rem; color: var(--text-headers); }
-        .timeline-disclaimer { font-size: 0.9rem; margin-bottom: 30px; padding-left: 15px; border-left: 3px solid var(--accent); font-style: italic; }
+        .timeline-disclaimer { font-size: 0.9rem; color: var(--text-body); margin-bottom: 30px; padding-left: 15px; border-left: 3px solid var(--accent); font-style: italic; line-height: 1.5; }
         
         .timeline-flex { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 10px; }
-        .time-block { flex: 1; min-width: 220px; background: var(--bg-gray); border-top: 4px solid var(--accent); padding: 25px 20px; border-radius: 0 0 8px 8px; }
+        .time-block { flex: 1; min-width: 220px; background: var(--bg-gray); border-top: 4px solid var(--accent); padding: 25px 20px; border-radius: 0 0 8px 8px; display: flex; flex-direction: column; }
         .time-block.pause-block { border-top-color: #999; background: #f0f0f0; }
         .time-block h4 { font-size: 1.1rem; margin-bottom: 5px; color: var(--text-headers); }
-        .promo-subheader { font-size: 0.75rem; text-transform: uppercase; color: var(--accent); font-weight: 700; display: block; margin-bottom: 15px; }
+        .promo-subheader { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent); font-weight: 700; display: block; margin-bottom: 15px; }
+        .time-block.pause-block .promo-subheader { color: #666; }
+        .time-block p { font-size: 0.9rem; color: var(--text-body); }
 
         .tracking-bar { margin-top: 25px; text-align: center; padding: 15px 20px; border-radius: 8px; font-size: 0.95rem; font-weight: 600; background: var(--bg-gray); color: var(--text-headers); border: 1px solid var(--border); }
 
-        /* ================= BUDGET ================= */
+        /* ================= DELIVERABLES & BUDGET ================= */
         .deliv-budget-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
         .entregables-col { background: var(--bg-white); border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
         .entregables-col h3 { font-size: 1.5rem; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; color: var(--text-headers); }
         .entregables-col h3::before { content: ''; display: inline-block; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
         ul.custom-list { list-style: none; }
-        ul.custom-list li { position: relative; padding-left: 25px; margin-bottom: 15px; font-size: 0.95rem; }
+        ul.custom-list li { position: relative; padding-left: 25px; margin-bottom: 15px; color: var(--text-body); font-size: 0.95rem; }
         ul.custom-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
 
         .budget-card { background: var(--bg-base); border: 1px solid var(--border); border-radius: 12px; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
         .budget-card > h3 { font-size: 1.5rem; margin-bottom: 25px; font-weight: 700; text-align: center; color: var(--text-headers); }
-        .price-breakdown { padding-top: 20px; border-top: 1px solid var(--border); width: 100%; }
-        .price-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 1.05rem;}
-        .price-row.total { margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--text-headers); color: var(--text-headers); font-weight: 700; font-size: 1.8rem; }
+        
+        .price-breakdown { padding-top: 20px; border-top: 1px solid var(--border); width: 100%; text-align: left; }
+        
+        /* Fixed mobile alignment for price-row */
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 12px; color: var(--text-body); font-size: 1.05rem; width: 100%; align-items: baseline; gap: 15px; }
+        .price-row span:last-child { text-align: right; flex-shrink: 0; }
+        
+        .price-row.total { margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--text-headers); color: var(--text-headers); font-weight: 700; font-size: 1.8rem; letter-spacing: -0.5px; }
+        .payment-plan { margin-top: 20px; font-size: 0.85rem; color: var(--text-body); border-top: 1px dashed var(--border); padding-top: 15px; text-align: left; }
 
-        /* ================= DISCLAIMERS & FOOTER ================= */
-        .info-box { background: var(--bg-white); border: 1px solid var(--border); border-left: 4px solid var(--text-headers); padding: 30px; border-radius: 8px; }
-        footer { background: var(--bg-base); padding: 40px 10%; text-align: center; border-top: 1px solid var(--border); color: var(--text-headers); display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        /* ================= INFO BOX (DISCLAIMERS) ================= */
+        .info-box { background: var(--bg-white); border: 1px solid var(--border); border-left: 4px solid var(--text-headers); padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
 
-        /* ================= MOBILE ================= */
+        /* ================= FOOTER ================= */
+        footer { background: var(--bg-base); padding: 40px 10%; text-align: center; border-top: 1px solid var(--border); color: var(--text-headers); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+        footer p { font-size: 0.9rem; margin-bottom: 10px; font-weight: 500;}
+        .footer-contact { font-size: 0.95rem; font-weight: 600; color: var(--text-headers); }
+
+        /* ================= MOBILE OPTIMIZATION ================= */
         @media (max-width: 900px) {
             .desktop-nav { display: none; }
             .hamburger { display: flex; }
             .hero { padding: 60px 5%; }
-            .hero .wrapper { flex-direction: column; text-align: center; gap: 40px; }
-            .hero-right h1 { font-size: 1.8rem; text-align: center;}
+            .hero .wrapper { flex-direction: column; text-align: center; gap: 40px; justify-content: center;}
+            .hero-right { justify-content: center; text-align: center; }
+            .hero-right h1 { font-size: 2rem; }
             section { padding: 60px 5%; }
-            .monthly-scope-grid, .deliv-budget-grid { grid-template-columns: 1fr; }
-            .timeline-flex { flex-direction: column; }
+            .grid-container, .monthly-scope-grid, .deliv-budget-grid { grid-template-columns: 1fr; gap: 20px; }
+            .timeline-flex { flex-direction: column; gap: 15px; }
             .time-block { border-top: none; border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; }
+            .time-block.pause-block { border-top: none; border-left: 4px solid #999; }
+            
+            /* Specific fix to ensures the label and price don't center-align as a single block on mobile */
+            .budget-card { align-items: stretch; text-align: left; }
+            .price-row.total { font-size: 1.6rem; gap: 10px;}
         }
     </style>
 </head>
@@ -299,7 +344,7 @@
             <div class="entregables-col">
                 <h3><span class="lang en">Setup Deliverables</span><span class="lang es hidden">Entregables de Setup</span></h3>
                 <ul class="custom-list">
-                    <li><span class="lang en"><strong>Analytics Setup:</strong> Setup of Google Ads to the website using GTM to track the complete funnel and measure exact ROI.</span><span class="lang es hidden"><strong>Setup Analítico:</strong> Configuración de Google Ads a la web usando GTM para trackear el funnel completo y medir el ROI exacto.</span></li>
+                    <li><span class="lang en"><strong>Analytics Setup:</strong> Setup of Google Ads to the website using Google Tag Manager to track the complete funnel and measure exact ROI.</span><span class="lang es hidden"><strong>Setup Analítico:</strong> Configuración de Google Ads a la web usando Google Tag Manager para trackear el funnel completo y medir el ROI exacto.</span></li>
                     <li><span class="lang en"><strong>Campaign Structure:</strong> Advanced segmentation and configured bidding strategy.</span><span class="lang es hidden"><strong>Estructura de Campaña:</strong> Segmentación avanzada y estrategia de pujas.</span></li>
                     <li><span class="lang en"><strong>Ad Copies:</strong> Premium texts designed for A/B testing.</span><span class="lang es hidden"><strong>Ad Copies:</strong> Textos premium diseñados para testeo A/B.</span></li>
                 </ul>
@@ -310,6 +355,10 @@
                     <div class="price-row"><span><span class="lang en">Subtotal</span><span class="lang es hidden">Base Imponible</span></span><span>250,00€</span></div>
                     <div class="price-row"><span><span class="lang en">VAT (21%)</span><span class="lang es hidden">IVA (21%)</span></span><span>52,50€</span></div>
                     <div class="price-row total"><span>Total</span><span>302,50€</span></div>
+                </div>
+                <div class="payment-plan">
+                    <span class="lang en"><strong>Payment plan:</strong> Single payment upon project activation.</span>
+                    <span class="lang es hidden"><strong>Forma de pago:</strong> Pago único a la activación del proyecto.</span>
                 </div>
             </div>
         </div>
@@ -334,7 +383,7 @@
                 <h3><span class="lang en">SEM Maintenance</span><span class="lang es hidden">Mantenimiento SEM</span></h3>
                 <ul>
                     <li><span class="lang en">Ongoing bid, budget, and keyword optimization</span><span class="lang es hidden">Optimización continua de pujas, presupuesto y keywords</span></li>
-                    <li><span class="lang en">A/B Testing (texts, copies, audience segmentations & marketing angles)</span><span class="lang es hidden">Test A/B (textos, segmentación de audiencia y ángulos de marketing)</span></li>
+                    <li><span class="lang en">A/B Testing execution (texts, copies, audience segmentations & marketing angles)</span><span class="lang es hidden">Ejecución de Test A/B (textos, copies, segmentación de audiencia y ángulos de marketing)</span></li>
                     <li><span class="lang en">Maintaining the "Optimization Timeline" log document</span><span class="lang es hidden">Mantenimiento del documento "Timeline de Optimización"</span></li>
                     <li><span class="lang en">Weekly or bi-weekly follow-up calls</span><span class="lang es hidden">Llamadas de seguimiento semanales o quincenales</span></li>
                 </ul>
@@ -347,14 +396,15 @@
                     <li><span class="lang en">Adding events, promos, classes, prices, and teachers</span><span class="lang es hidden">Añadir eventos, promos, clases, precios y profesores</span></li>
                     <li><span class="lang en">Dedicated SOHO House & Madrid integrations</span><span class="lang es hidden">Integraciones dedicadas de SOHO House y Madrid</span></li>
                     <li><span class="lang en">Quick minor changes and fixes (enhancements)</span><span class="lang es hidden">Arreglos y cambios menores rápidos (mejoras)</span></li>
+                    <li><span class="lang en"><em>Note: New web sections/pages are not in budget</em></span><span class="lang es hidden"><em>Nota: Secciones web nuevas quedan fuera del presupuesto</em></span></li>
                 </ul>
             </div>
 
             <div class="scope-card hover-3d">
                 <h3><span class="lang en">Backlinks & Local PR</span><span class="lang es hidden">Backlinks y PR Local</span></h3>
                 <ul>
-                    <li><span class="lang en">Research, outreach and strategy execution</span><span class="lang es hidden">Investigación, outreach y ejecución de estrategia</span></li>
-                    <li><span class="lang en">Acquiring 3-5 backlinks by reaching out to local press</span><span class="lang es hidden">Adquisición de 3-5 backlinks en prensa local</span></li>
+                    <li><span class="lang en">Research, outreach, PR/Publicity and strategy execution</span><span class="lang es hidden">Investigación, outreach, estrategia de PR y publicidad</span></li>
+                    <li><span class="lang en">Acquiring 3-5 backlinks by reaching out to local press</span><span class="lang es hidden">Adquisición de 3-5 backlinks contactando a prensa local</span></li>
                     <li><span class="lang en">Continuous tracking of domain authority (DA)</span><span class="lang es hidden">Seguimiento continuo de la autoridad de dominio (DA)</span></li>
                 </ul>
             </div>
@@ -365,24 +415,28 @@
                     <li><span class="lang en">Publishing 2-3 targeted posts (events, promos, classes)</span><span class="lang es hidden">Publicación de 2-3 posts (eventos, promos, clases)</span></li>
                     <li><span class="lang en">Weekly updates of teachers, classes, and studio pictures</span><span class="lang es hidden">Actualizaciones semanales de profesores, clases y fotos</span></li>
                     <li><span class="lang en">Manage and professionally respond to reviews weekly</span><span class="lang es hidden">Gestión y respuesta profesional a reseñas semanalmente</span></li>
+                    <li><span class="lang en">Continuous enhancement of local search visibility</span><span class="lang es hidden">Mejora continua de la visibilidad en búsquedas locales</span></li>
                 </ul>
             </div>
 
             <div class="scope-card highlight hover-3d">
                 <h3><span class="lang en">Analytics, Reports & Insights</span><span class="lang es hidden">Analítica, Reportes e Insights</span></h3>
-                <ul style="display: flex; flex-direction: column; align-items: center;">
-                    <li><span class="lang en">Detailed monthly reporting (CPC, Clicks, CR, A/B results)</span><span class="lang es hidden">Reportes mensuales detallados (CPC, Clics, CR, resultados A/B)</span></li>
-                    <li><span class="lang en">Funnel Analysis: From ads to web, drop-offs, and conversions</span><span class="lang es hidden">Análisis de Funnel: de anuncios a web, fugas y conversiones</span></li>
-                    <li><span class="lang en">Actionable insights and conclusions interpreting the data</span><span class="lang es hidden">Insights accionables y conclusiones interpretando los datos</span></li>
-                </ul>
+                <div class="ul-wrapper">
+                    <ul>
+                        <li><span class="lang en">Detailed monthly reporting (CPC, Clicks, CR, A/B results)</span><span class="lang es hidden">Reportes mensuales detallados (CPC, Clics, CR, resultados A/B)</span></li>
+                        <li><span class="lang en">Funnel Analysis: From ads to web, drop-offs, and conversions</span><span class="lang es hidden">Análisis de Funnel: de anuncios a web, fugas y conversiones</span></li>
+                        <li><span class="lang en">Actionable insights and conclusions interpreting the data</span><span class="lang es hidden">Insights accionables y conclusiones interpretando los datos</span></li>
+                        <li><span class="lang en">Testing demographics, keywords, and ad copies</span><span class="lang es hidden">Testeo de demografía, keywords y copies de anuncios</span></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
         <div class="timeline-wrapper">
             <h3><span class="lang en">SEM Timeline (4/5 Months)</span><span class="lang es hidden">Cronograma SEM (4/5 Meses)</span></h3>
             <div class="timeline-disclaimer">
-                <span class="lang en">Note: Depending on Google credit validation and factors such as daily spend adjustments, the timeline will take 4 or 5 months, but fees are strictly capped at the 4 budgeted months.</span>
-                <span class="lang es hidden">Nota: Dependiendo de la validación del crédito de Google y factores como los cambios en el gasto diario, el proceso durará 4 o 5 meses, pero los honorarios se mantienen cerrados a los 4 meses presupuestados.</span>
+                <span class="lang en">Note: Time is an estimate. External Google factors may extend actual duration to 5-6 months, but our fees remain strictly capped at the 4 budgeted months.</span>
+                <span class="lang es hidden">Nota: El tiempo es una estimación. Factores externos de Google pueden extender la duración real a 5-6 meses, pero los honorarios se mantienen cerrados a los 4 meses presupuestados.</span>
             </div>
             <div class="timeline-flex">
                 <div class="time-block">
@@ -413,8 +467,8 @@
             </div>
             
             <div class="tracking-bar" style="margin-top: 15px; background: var(--bg-white);">
-                <span class="lang en"><strong>Concurrent Monthly Execution:</strong> Web development, Backlinks, Local PR, and GMB updates are actively executed and reported every month.</span>
-                <span class="lang es hidden"><strong>Ejecución Concurrente:</strong> El desarrollo web, Backlinks, PR local y actualizaciones de GMB se ejecutan y reportan todos los meses.</span>
+                <span class="lang en"><strong>Concurrent Monthly Execution:</strong> Web development, Backlinks, Local PR, and GMB updates are actively executed and reported every single month.</span>
+                <span class="lang es hidden"><strong>Ejecución Concurrente:</strong> El desarrollo web, Backlinks, PR local y actualizaciones de GMB se ejecutan y reportan todos los meses sin falta.</span>
             </div>
         </div>
 
@@ -422,18 +476,31 @@
             <div class="entregables-col">
                 <h3><span class="lang en">Monthly Deliverables</span><span class="lang es hidden">Entregables Mensuales</span></h3>
                 <ul class="custom-list">
-                    <li><span class="lang en"><strong>SEM Maintenance:</strong> Bid strategy, Ad copies, log doc.</span><span class="lang es hidden"><strong>Mantenimiento SEM:</strong> Estrategia pujas, Ad copies, log doc.</span></li>
-                    <li><span class="lang en"><strong>Web Development:</strong> 10h for popups, minor fixes, events.</span><span class="lang es hidden"><strong>Desarrollo Web:</strong> 10h para popups, arreglos menores, eventos.</span></li>
+                    <li><span class="lang en"><strong>SEM Maintenance:</strong> Bid strategy, Ad copies, optimization timeline log.</span><span class="lang es hidden"><strong>Mantenimiento SEM:</strong> Estrategia pujas, Ad copies, log de timeline.</span></li>
+                    <li><span class="lang en"><strong>Web Development:</strong> 10h for popups, minor fixes, events (SOHO, Madrid).</span><span class="lang es hidden"><strong>Desarrollo Web:</strong> 10h para popups, arreglos menores, eventos.</span></li>
                     <li><span class="lang en"><strong>GMB & Local PR:</strong> 3-5 backlinks, 2-3 GMB posts & review management.</span><span class="lang es hidden"><strong>GMB y PR Local:</strong> 3-5 backlinks, 2-3 posts GMB y gestión reseñas.</span></li>
-                    <li><span class="lang en"><strong>Monthly Reporting:</strong> Funnel tracking, ROI measurement and data insights.</span><span class="lang es hidden"><strong>Reportes Mensuales:</strong> Tracking funnel, medición ROI e insights.</span></li>
+                    <li><span class="lang en"><strong>Monthly Reporting:</strong> Detailed funnel tracking, ROI measurement, and data interpretation.</span><span class="lang es hidden"><strong>Reportes Mensuales:</strong> Tracking detallado del funnel, medición de ROI e interpretación de datos.</span></li>
                 </ul>
             </div>
             <div class="budget-card">
                 <h3><span class="lang en">Monthly Budget</span><span class="lang es hidden">Presupuesto Mensual</span></h3>
                 <div class="price-breakdown">
-                    <div class="price-row"><span><span class="lang en">Subtotal</span><span class="lang es hidden">Base Imponible</span></span><span>1.100,00€ / <span class="lang en">mo</span><span class="lang es hidden">mes</span></span></div>
-                    <div class="price-row"><span><span class="lang en">VAT (21%)</span><span class="lang es hidden">IVA (21%)</span></span><span>231,00€ / <span class="lang en">mo</span><span class="lang es hidden">mes</span></span></div>
-                    <div class="price-row total"><span>Total</span><span>1.331,00€ / <span class="lang en">mo</span><span class="lang es hidden">mes</span></span></div>
+                    <div class="price-row">
+                        <span><span class="lang en">Subtotal</span><span class="lang es hidden">Base Imponible</span></span>
+                        <span>1.100,00€ / <span class="lang en">mo</span><span class="lang es hidden">mes</span></span>
+                    </div>
+                    <div class="price-row">
+                        <span><span class="lang en">VAT (21%)</span><span class="lang es hidden">IVA (21%)</span></span>
+                        <span>231,00€ / <span class="lang en">mo</span><span class="lang es hidden">mes</span></span>
+                    </div>
+                    <div class="price-row total">
+                        <span>Total</span>
+                        <span>1.331,00€ / <span class="lang en">mo</span><span class="lang es hidden">mes</span></span>
+                    </div>
+                </div>
+                <div class="payment-plan">
+                    <span class="lang en"><strong>Maintenance Plan:</strong> Billed monthly in arrears.</span>
+                    <span class="lang es hidden"><strong>Plan de Mantenimiento:</strong> Facturado a mes vencido.</span>
                 </div>
             </div>
         </div>
@@ -447,18 +514,18 @@
             <ul class="custom-list" style="margin-bottom: 0;">
                 <li>
                     <strong style="color: var(--text-headers);"><span class="lang en">Ad Spend Excluded:</span><span class="lang es hidden">Inversión Publicitaria Excluida:</span></strong> 
-                    <span class="lang en">Direct investment in Google Ads is billed directly by Google to the client's payment method.</span>
-                    <span class="lang es hidden">La inversión directa en Google Ads se factura directamente por Google al método de pago del cliente.</span>
+                    <span class="lang en">This proposal covers agency management fees. Direct investment in Google Ads is billed directly by Google to the client's payment method.</span>
+                    <span class="lang es hidden">Esta propuesta cubre los honorarios de gestión de agencia. La inversión directa en Google Ads se factura directamente por Google al método de pago del cliente.</span>
                 </li>
                 <li>
                     <strong style="color: var(--text-headers);"><span class="lang en">Third-Party Costs:</span><span class="lang es hidden">Costes de Terceros:</span></strong> 
-                    <span class="lang en">Any third-party costs (servers, external tools, domains) are not included.</span>
-                    <span class="lang es hidden">Cualquier coste de terceros (servidores, herramientas externas, dominios) no está incluido.</span>
+                    <span class="lang en">Any third-party costs (servers, external tools, domains) are not included and are borne by the client.</span>
+                    <span class="lang es hidden">Cualquier coste de terceros (servidores, herramientas externas, dominios) no está incluido y corre a cargo del cliente.</span>
                 </li>
                 <li>
                     <strong style="color: var(--text-headers);"><span class="lang en">Campaign Flexibility:</span><span class="lang es hidden">Flexibilidad de Campañas:</span></strong> 
-                    <span class="lang en">The timeline is subject to Google's promo validation and our chosen daily spend strategy (typically starting at 5€/day and scaling once winners are found). We charge a strict 4 months of maintenance, even if campaigns extend to 5 months to utilize the full ad credit.</span>
-                    <span class="lang es hidden">El cronograma está sujeto a la validación de Google y a la estrategia de gasto diario (normalmente 5€/día iniciales escalando al encontrar ganadores). Cobramos estrictamente 4 meses, incluso si la campaña se extiende a 5 meses para usar el crédito completo.</span>
+                    <span class="lang en">The timeline is subject to Google's promo validation periods and our chosen daily spend strategy. We typically start with a minimum of 5€/day to test campaigns and segments; once winning combinations are found, we scale the daily spend. We charge a strict 4 months of maintenance, even if campaigns extend to 5 or 6 months to utilize the full ad credit.</span>
+                    <span class="lang es hidden">El cronograma está sujeto a los periodos de validación de Google y a la estrategia de gasto diario elegida. Normalmente empezamos con un mínimo de 5€ diarios para testear campañas y segmentos; una vez que encontramos combinaciones ganadoras, escalamos el gasto. Cobramos estrictamente 4 meses de mantenimiento, incluso si el tiempo de campaña se extiende a 5 o 6 meses para utilizar todo el crédito.</span>
                 </li>
             </ul>
         </div>
@@ -473,26 +540,71 @@
     </footer>
 
     <script>
+        // Language Toggle
         function setLang(lang) {
-            document.getElementById('btn-en-desktop').classList.toggle('active', lang === 'en');
-            document.getElementById('btn-es-desktop').classList.toggle('active', lang === 'es');
-            document.getElementById('btn-en-mobile').classList.toggle('active', lang === 'en');
-            document.getElementById('btn-es-mobile').classList.toggle('active', lang === 'es');
-            document.querySelectorAll('.lang').forEach(el => el.classList.toggle('hidden', !el.classList.contains(lang)));
+            document.getElementById('btn-en-desktop').classList.remove('active');
+            document.getElementById('btn-es-desktop').classList.remove('active');
+            document.getElementById('btn-en-mobile').classList.remove('active');
+            document.getElementById('btn-es-mobile').classList.remove('active');
+            
+            document.getElementById('btn-' + lang + '-desktop').classList.add('active');
+            document.getElementById('btn-' + lang + '-mobile').classList.add('active');
+            
+            document.querySelectorAll('.lang').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.lang.' + lang).forEach(el => el.classList.remove('hidden'));
         }
 
+        // Hamburger Menu Toggle
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const closeMenuBtn = document.getElementById('close-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        hamburgerBtn.addEventListener('click', () => { mobileMenu.classList.add('open'); document.body.style.overflow = 'hidden'; });
-        closeMenuBtn.addEventListener('click', () => { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; });
-        document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }));
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden'; // prevent scrolling
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        hamburgerBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Scroll Animations (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.fade-in-up').forEach(element => observer.observe(element));
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Trigger initial animation
+        setTimeout(() => {
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    el.classList.add('visible');
+                }
+            });
+        }, 100);
     </script>
 </body>
 </html>
