@@ -135,6 +135,10 @@
         .scope-card ul { list-style: none; padding-left: 0; }
         .scope-card ul li { position: relative; padding-left: 20px; margin-bottom: 15px; font-size: 0.95rem; }
         .scope-card ul li::before { content: '-'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+        
+        .scope-card.highlight ul { display: inline-block; text-align: left; margin: 0 auto; max-width: 800px;}
+        .scope-card.highlight h3 { text-align: center; }
+        .scope-card.highlight .ul-wrapper { text-align: center; }
 
         /* ================= TIMELINE ================= */
         .timeline-wrapper { margin-top: 60px; background: var(--bg-white); padding: 40px; border-radius: 12px; border: 1px solid var(--border); }
@@ -162,14 +166,13 @@
         .budget-card > h3 { font-size: 1.5rem; margin-bottom: 25px; font-weight: 700; text-align: center; color: var(--text-headers); }
         .price-breakdown { padding-top: 20px; border-top: 1px solid var(--border); width: 100%; }
         
-        .price-row { display: flex; justify-content: space-between; margin-bottom: 12px; color: var(--text-body); font-size: 1.05rem; width: 100%; align-items: baseline; gap: 15px; }
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 1.05rem; width: 100%; align-items: baseline; gap: 15px; }
         .price-row span:last-child { text-align: right; flex-shrink: 0; }
-        .price-row.total { margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--text-headers); color: var(--text-headers); font-weight: 700; font-size: 1.8rem; letter-spacing: -0.5px; }
+        .price-row.total { margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--text-headers); color: var(--text-headers); font-weight: 700; font-size: 1.8rem; }
 
         /* ================= DISCLAIMERS & FOOTER ================= */
         .info-box { background: var(--bg-white); border: 1px solid var(--border); border-left: 4px solid var(--text-headers); padding: 30px; border-radius: 8px; }
         footer { background: var(--bg-base); padding: 40px 10%; text-align: center; border-top: 1px solid var(--border); color: var(--text-headers); display: flex; flex-direction: column; align-items: center; gap: 5px; }
-        .footer-contact { font-size: 0.95rem; font-weight: 600; color: var(--text-headers); }
 
         /* ================= MOBILE ================= */
         @media (max-width: 900px) {
@@ -312,18 +315,13 @@
             <div class="budget-card">
                 <h3><span class="lang en">Setup Budget</span><span class="lang es hidden">Presupuesto Setup</span></h3>
                 <div class="price-breakdown">
-                    <div class="price-row">
-                        <span><span class="lang en">Subtotal</span><span class="lang es hidden">Base Imponible</span></span>
-                        <span>250,00€</span>
-                    </div>
-                    <div class="price-row">
-                        <span><span class="lang en">VAT (21%)</span><span class="lang es hidden">IVA (21%)</span></span>
-                        <span>52,50€</span>
-                    </div>
-                    <div class="price-row total">
-                        <span>Total</span>
-                        <span>302,50€</span>
-                    </div>
+                    <div class="price-row"><span><span class="lang en">Subtotal</span><span class="lang es hidden">Base Imponible</span></span><span>250,00€</span></div>
+                    <div class="price-row"><span><span class="lang en">VAT (21%)</span><span class="lang es hidden">IVA (21%)</span></span><span>52,50€</span></div>
+                    <div class="price-row total"><span>Total</span><span>302,50€</span></div>
+                </div>
+                <div class="payment-plan">
+                    <span class="lang en"><strong>Payment plan:</strong> Single payment upon project activation.</span>
+                    <span class="lang es hidden"><strong>Forma de pago:</strong> Pago único a la activación del proyecto.</span>
                 </div>
             </div>
         </div>
@@ -333,8 +331,8 @@
         <div class="section-header">
             <h2><span class="lang en">SEM Campaigns & Web Retainer</span><span class="lang es hidden">Campañas SEM y Retainer Web</span></h2>
             <p>
-                <span class="lang en">The Growth Engine. A detailed monthly scope covering ongoing SEM optimization, web updates, tracking, GMB/Google Maps management, and backlinks for local digital PR.</span>
-                <span class="lang es hidden">El Motor de Crecimiento. Un alcance mensual detallado que cubre optimización SEM continua, actualizaciones web, tracking, gestión de GMB/Google Maps, y backlinks para PR digital local.</span>
+                <span class="lang en">The Growth Engine. A detailed monthly scope covering ongoing SEM optimization, web updates, tracking, GMB/Google Maps, and local PR.</span>
+                <span class="lang es hidden">El Motor de Crecimiento. Un alcance mensual detallado que cubre optimización SEM continua, actualizaciones web, tracking, GMB y PR local.</span>
             </p>
         </div>
 
@@ -348,7 +346,7 @@
                 <h3><span class="lang en">SEM Maintenance</span><span class="lang es hidden">Mantenimiento SEM</span></h3>
                 <ul>
                     <li><span class="lang en">Ongoing bid, budget, and keyword optimization</span><span class="lang es hidden">Optimización continua de pujas, presupuesto y keywords</span></li>
-                    <li><span class="lang en">A/B Testing execution (texts, ad copies, audience segmentations & marketing angles)</span><span class="lang es hidden">Ejecución de Test A/B (textos, copies, segmentación de audiencia y ángulos de marketing)</span></li>
+                    <li><span class="lang en">A/B Testing execution (texts, copies, audience segmentations & marketing angles)</span><span class="lang es hidden">Ejecución de Test A/B (textos, copies, segmentación de audiencia y ángulos de marketing)</span></li>
                     <li><span class="lang en">Maintaining the "Optimization Timeline" log document</span><span class="lang es hidden">Mantenimiento del documento "Timeline de Optimización"</span></li>
                     <li><span class="lang en">Weekly or bi-weekly follow-up calls</span><span class="lang es hidden">Llamadas de seguimiento semanales o quincenales</span></li>
                 </ul>
@@ -358,7 +356,7 @@
                 <h3><span class="lang en">Web Development</span><span class="lang es hidden">Desarrollo Web</span></h3>
                 <ul>
                     <li><span class="lang en">10 hours of updates (images, videos, text, popups)</span><span class="lang es hidden">10 horas de actualizaciones (imágenes, videos, textos, popups)</span></li>
-                    <li><span class="lang en">Adding events, promos, classes, prices, and teachers</span><span class="lang es hidden">Añadir eventos, promos, clases, precios y profesores</span></li>
+                    <li><span class="lang en">Adding/Changing events, promos, classes, prices, and teachers</span><span class="lang es hidden">Añadir/Cambiar eventos, promos, clases, precios y profesores</span></li>
                     <li><span class="lang en">Dedicated SOHO House & Madrid web updates</span><span class="lang es hidden">Actualizaciones web dedicadas de SOHO House y Madrid</span></li>
                     <li><span class="lang en">Quick minor changes and fixes (enhancements)</span><span class="lang es hidden">Arreglos y cambios menores rápidos (mejoras)</span></li>
                     <li><span class="lang en"><em>Note: New web sections/pages are not in budget</em></span><span class="lang es hidden"><em>Nota: Secciones web nuevas quedan fuera del presupuesto</em></span></li>
@@ -400,8 +398,8 @@
         <div class="timeline-wrapper">
             <h3><span class="lang en">SEM Timeline (4/5 Months)</span><span class="lang es hidden">Cronograma SEM (4/5 Meses)</span></h3>
             <div class="timeline-disclaimer">
-                <span class="lang en">Note: Depending on Google credit validation and factors such as daily spend adjustments, the timeline will take 4 or 5 months, but fees are strictly capped at the 4 budgeted months.</span>
-                <span class="lang es hidden">Nota: Dependiendo de la validación del crédito de Google y factores como los cambios en el gasto diario, el proceso durará 4 o 5 meses, pero los honorarios se mantienen cerrados a los 4 meses presupuestados.</span>
+                <span class="lang en">Note: Depending on <a href="https://business.google.com/es/google-ads/" target="_blank" style="color: #0000EE; text-decoration: underline;">Google credit</a> validation and factors such as daily spend adjustments, the timeline will take 4 or 5 months, but fees are strictly capped at the 4 budgeted months.</span>
+                <span class="lang es hidden">Nota: Dependiendo de la validación del <a href="https://business.google.com/es/google-ads/" target="_blank" style="color: #0000EE; text-decoration: underline;">crédito de Google</a> y factores como los cambios en el gasto diario, el proceso durará 4 o 5 meses, pero los honorarios se mantienen cerrados a los 4 meses presupuestados.</span>
             </div>
             <div class="timeline-flex">
                 <div class="time-block">
