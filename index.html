@@ -104,22 +104,22 @@
             align-items: center;
         }
         .hero .wrapper { 
-            justify-content: center; 
-            gap: 100px; /* Big gap between logo and text */
+            justify-content: flex-start; /* Anchor content to the left */
+            gap: 250px; /* 2.5x larger gap between logo and text box */
         }
         .hero-left { 
             flex: 0 1 auto; 
             display: flex; 
-            justify-content: flex-end; 
+            justify-content: flex-start; 
         }
         .hero-left img { max-width: 220px; width: 100%; }
         
         .hero-right { 
-            flex: 0 1 auto; 
+            flex: 1 1 auto; 
             display: flex; 
             justify-content: flex-start; 
             text-align: left; 
-            max-width: 550px;
+            max-width: 600px;
         }
         .hero-right h1 { 
             font-size: 2.2rem; 
@@ -132,7 +132,7 @@
 
         /* ================= LAYOUT COMMON ================= */
         section { padding: 100px 10%; }
-        .section-header { margin-bottom: 60px; max-width: 800px; }
+        .section-header { margin-bottom: 60px; max-width: 850px; }
         .section-header h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 15px; letter-spacing: -0.5px; color: var(--text-headers); font-family: 'Poppins', sans-serif;}
         .section-header p { font-size: 1.1rem; color: var(--text-body); }
 
@@ -142,22 +142,23 @@
         .card h3 { font-size: 1.3rem; color: var(--accent); margin-bottom: 15px; font-weight: 600; }
         .card p { color: var(--text-body); font-size: 0.95rem; }
 
-        /* ================= MONTHLY SCOPE GRID (2x2 Layout) ================= */
+        /* ================= MONTHLY SCOPE GRID ================= */
         .monthly-scope-grid { 
             display: grid; 
-            grid-template-columns: 1fr 1fr; /* Forced 2 columns for a 2x2 look */
+            grid-template-columns: 1fr 1fr; /* Forced 2 columns */
             gap: 40px; 
             margin-top: 40px; 
         }
         .scope-card { 
             background: var(--bg-white); 
-            padding: 50px 40px; /* More spacious padding */
+            padding: 50px 40px; 
             border-radius: 12px; 
             border: 1px solid var(--border); 
             border-left: 5px solid var(--accent); 
             position: relative; 
         }
         .scope-card.highlight {
+            grid-column: 1 / -1; /* Spans full width at the bottom */
             border: 2px solid var(--accent);
             border-left: 6px solid var(--accent);
             background: #ffffff; /* Pure white background */
@@ -166,6 +167,10 @@
         .scope-card ul { list-style: none; padding-left: 0; text-align: left;}
         .scope-card ul li { position: relative; padding-left: 20px; margin-bottom: 15px; color: var(--text-body); font-size: 0.95rem; }
         .scope-card ul li::before { content: '-'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+
+        .scope-card.highlight ul { display: inline-block; text-align: left; margin: 0 auto; max-width: 800px;}
+        .scope-card.highlight h3 { text-align: center; }
+        .scope-card.highlight .ul-wrapper { text-align: center; }
 
         /* ================= TIMELINE SECTION ================= */
         .timeline-wrapper { margin-top: 60px; background: var(--bg-white); padding: 40px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 5px 20px rgba(0,0,0,0.02); }
@@ -207,11 +212,15 @@
         .footer-contact { font-size: 0.95rem; font-weight: 600; color: var(--text-headers); }
 
         /* ================= MOBILE OPTIMIZATION ================= */
+        @media (max-width: 1024px) {
+            .hero .wrapper { gap: 100px; } /* Reduce gap on medium screens */
+        }
         @media (max-width: 900px) {
             .desktop-nav { display: none; }
             .hamburger { display: flex; }
             .hero { padding: 60px 5%; }
             .hero .wrapper { flex-direction: column; text-align: center; gap: 40px; justify-content: center;}
+            .hero-left { justify-content: center; }
             .hero-right { justify-content: center; text-align: center; }
             .hero-right h1 { font-size: 2rem; }
             section { padding: 60px 5%; }
@@ -363,8 +372,8 @@
         <div class="section-header">
             <h2><span class="lang en">SEM Campaigns & Web Retainer</span><span class="lang es hidden">Campañas SEM y Retainer Web</span></h2>
             <p>
-                <span class="lang en">The Growth Engine. A detailed monthly scope covering ongoing SEM optimization, extensive web updates, tracking, and local digital PR.</span>
-                <span class="lang es hidden">El Motor de Crecimiento. Un alcance mensual detallado que cubre optimización SEM continua, actualizaciones web extensas, tracking y PR digital local.</span>
+                <span class="lang en">The Growth Engine. A detailed monthly scope covering ongoing SEM optimization, web updates, tracking, GMB/Google Maps management, and backlinks for local digital PR.</span>
+                <span class="lang es hidden">El Motor de Crecimiento. Un alcance mensual detallado que cubre optimización SEM continua, actualizaciones web, tracking, gestión de GMB/Google Maps, y backlinks para PR digital local.</span>
             </p>
         </div>
 
@@ -378,7 +387,7 @@
                 <h3><span class="lang en">SEM Maintenance</span><span class="lang es hidden">Mantenimiento SEM</span></h3>
                 <ul>
                     <li><span class="lang en">Ongoing bid, budget, and keyword optimization</span><span class="lang es hidden">Optimización continua de pujas, presupuesto y keywords</span></li>
-                    <li><span class="lang en">A/B Testing execution (texts, ad copies & segmentations)</span><span class="lang es hidden">Ejecución de Test A/B (textos, copies y segmentaciones)</span></li>
+                    <li><span class="lang en">A/B Testing execution (texts, ad copies, audience segmentations & marketing angles)</span><span class="lang es hidden">Ejecución de Test A/B (textos, copies, segmentación de audiencia y ángulos de marketing)</span></li>
                     <li><span class="lang en">Maintaining the "Optimization Timeline" log document</span><span class="lang es hidden">Mantenimiento del documento "Timeline de Optimización"</span></li>
                     <li><span class="lang en">Weekly or bi-weekly follow-up calls</span><span class="lang es hidden">Llamadas de seguimiento semanales o quincenales</span></li>
                 </ul>
@@ -396,24 +405,34 @@
             </div>
 
             <div class="scope-card hover-3d">
-                <h3><span class="lang en">Local PR & GMB</span><span class="lang es hidden">PR Local y GMB</span></h3>
+                <h3><span class="lang en">Backlinks & Local PR</span><span class="lang es hidden">Backlinks y PR Local</span></h3>
                 <ul>
-                    <li><span class="lang en">Publishing 2-3 targeted posts (events, promos, classes)</span><span class="lang es hidden">Publicación de 2-3 posts (eventos, promos, clases)</span></li>
-                    <li><span class="lang en">Weekly updates of teachers, classes, and studio pictures</span><span class="lang es hidden">Actualizaciones semanales de profesores, clases y fotos</span></li>
-                    <li><span class="lang en">Manage and professionally respond to reviews weekly</span><span class="lang es hidden">Gestión y respuesta profesional a reseñas semanalmente</span></li>
+                    <li><span class="lang en">Research, outreach, PR/Publicity and strategy execution</span><span class="lang es hidden">Investigación, outreach, estrategia de PR y publicidad</span></li>
                     <li><span class="lang en">Acquiring 3-5 backlinks by reaching out to local press</span><span class="lang es hidden">Adquisición de 3-5 backlinks contactando a prensa local</span></li>
                     <li><span class="lang en">Continuous tracking of domain authority (DA)</span><span class="lang es hidden">Seguimiento continuo de la autoridad de dominio (DA)</span></li>
                 </ul>
             </div>
 
+            <div class="scope-card hover-3d">
+                <h3><span class="lang en">Google My Business / Maps (GMB)</span><span class="lang es hidden">Google My Business / Maps (GMB)</span></h3>
+                <ul>
+                    <li><span class="lang en">Publishing 2-3 targeted posts (events, promos, classes)</span><span class="lang es hidden">Publicación de 2-3 posts (eventos, promos, clases)</span></li>
+                    <li><span class="lang en">Weekly updates of teachers, classes, and studio pictures</span><span class="lang es hidden">Actualizaciones semanales de profesores, clases y fotos</span></li>
+                    <li><span class="lang en">Manage and professionally respond to reviews weekly</span><span class="lang es hidden">Gestión y respuesta profesional a reseñas semanalmente</span></li>
+                    <li><span class="lang en">Continuous enhancement of local search visibility</span><span class="lang es hidden">Mejora continua de la visibilidad en búsquedas locales</span></li>
+                </ul>
+            </div>
+
             <div class="scope-card highlight hover-3d">
                 <h3><span class="lang en">Analytics, Reports & Insights</span><span class="lang es hidden">Analítica, Reportes e Insights</span></h3>
-                <ul>
-                    <li><span class="lang en">Detailed monthly reporting (CPC, Clicks, CR, A/B results)</span><span class="lang es hidden">Reportes mensuales detallados (CPC, Clics, CR, resultados A/B)</span></li>
-                    <li><span class="lang en">Funnel Analysis: From ads to web, drop-offs, and conversions</span><span class="lang es hidden">Análisis de Funnel: de anuncios a web, fugas y conversiones</span></li>
-                    <li><span class="lang en">Actionable insights and conclusions interpreting the data</span><span class="lang es hidden">Insights accionables y conclusiones interpretando los datos</span></li>
-                    <li><span class="lang en">Testing demographics, keywords, and ad copies</span><span class="lang es hidden">Testeo de demografía, keywords y copies de anuncios</span></li>
-                </ul>
+                <div class="ul-wrapper">
+                    <ul>
+                        <li><span class="lang en">Detailed monthly reporting (CPC, Clicks, CR, A/B results)</span><span class="lang es hidden">Reportes mensuales detallados (CPC, Clics, CR, resultados A/B)</span></li>
+                        <li><span class="lang en">Funnel Analysis: From ads to web, drop-offs, and conversions</span><span class="lang es hidden">Análisis de Funnel: de anuncios a web, fugas y conversiones</span></li>
+                        <li><span class="lang en">Actionable insights and conclusions interpreting the data</span><span class="lang es hidden">Insights accionables y conclusiones interpretando los datos</span></li>
+                        <li><span class="lang en">Testing demographics, keywords, and ad copies</span><span class="lang es hidden">Testeo de demografía, keywords y copies de anuncios</span></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -459,7 +478,7 @@
                 <ul class="custom-list">
                     <li><span class="lang en"><strong>SEM Maintenance:</strong> Bid strategy, Ad copies, optimization timeline log.</span><span class="lang es hidden"><strong>Mantenimiento SEM:</strong> Estrategia pujas, Ad copies, log de timeline.</span></li>
                     <li><span class="lang en"><strong>Web Development:</strong> 10h for popups, minor fixes, events (SOHO, Madrid).</span><span class="lang es hidden"><strong>Desarrollo Web:</strong> 10h para popups, arreglos menores, eventos.</span></li>
-                    <li><span class="lang en"><strong>Google My Business:</strong> 2-3 posts, image/teacher updates, and weekly review management.</span><span class="lang es hidden"><strong>Google My Business:</strong> 2-3 posts, actualización fotos/profesores y gestión de reseñas.</span></li>
+                    <li><span class="lang en"><strong>Google My Business/Maps:</strong> 2-3 posts, image/teacher updates, and weekly review management.</span><span class="lang es hidden"><strong>Google My Business/Maps:</strong> 2-3 posts, actualización fotos/profesores y gestión de reseñas.</span></li>
                     <li><span class="lang en"><strong>Local PR & Backlinks:</strong> 3-5 backlinks acquired from local press and DA tracking.</span><span class="lang es hidden"><strong>PR Local y Backlinks:</strong> 3-5 backlinks de prensa local y tracking de DA.</span></li>
                     <li><span class="lang en"><strong>Monthly Reporting:</strong> Detailed funnel tracking, ROI measurement, and data interpretation.</span><span class="lang es hidden"><strong>Reportes Mensuales:</strong> Tracking detallado del funnel, medición de ROI e interpretación de datos.</span></li>
                 </ul>
