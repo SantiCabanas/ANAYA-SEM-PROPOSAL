@@ -88,7 +88,7 @@
         .mobile-menu.open { right: 0; }
         .close-menu { position: absolute; top: 20px; left: 5%; font-size: 2.5rem; color: var(--text-headers); background: none; border: none; cursor: pointer; }
 
-        /* ================= HERO (Group Centered) ================= */
+        /* ================= HERO ================= */
         .hero { 
             background: var(--bg-white); 
             padding: 80px 5%; 
@@ -99,8 +99,8 @@
             justify-content: center;
         }
         .hero .wrapper { 
-            justify-content: center; /* Group content centered */
-            gap: 250px; /* Large gap maintained */
+            justify-content: center; 
+            gap: 250px; 
         }
         .hero-left { display: flex; flex: 0 1 auto; }
         .hero-left img { max-width: 220px; width: 100%; }
@@ -123,6 +123,7 @@
         .card { background: var(--bg-white); padding: 40px 30px; border-radius: 12px; border: 1px solid var(--border); display: flex; flex-direction: column; }
         .card h3 { font-size: 1.3rem; color: var(--accent); margin-bottom: 15px; font-weight: 600; }
 
+        /* ================= MONTHLY SCOPE ================= */
         .monthly-scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
         .scope-card { 
             background: var(--bg-white); padding: 50px 40px; border-radius: 12px; 
@@ -139,6 +140,29 @@
         .scope-card.highlight ul { display: inline-block; text-align: left; margin: 0 auto; max-width: 800px;}
         .scope-card.highlight h3 { text-align: center; }
         .scope-card.highlight .ul-wrapper { text-align: center; }
+
+        /* ================= ADD-ONS ================= */
+        .addon-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-left: 5px solid var(--accent);
+            border-radius: 12px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .addon-card h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            color: var(--text-headers);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .addon-card p {
+            font-size: 0.95rem;
+            color: var(--text-body);
+            line-height: 1.5;
+        }
 
         /* ================= TIMELINE ================= */
         .timeline-wrapper { margin-top: 60px; background: var(--bg-white); padding: 40px; border-radius: 12px; border: 1px solid var(--border); }
@@ -168,9 +192,10 @@
         
         .price-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 1.05rem; width: 100%; align-items: baseline; gap: 15px; }
         .price-row span:last-child { text-align: right; flex-shrink: 0; }
-        .price-row.total { margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--text-headers); color: var(--text-headers); font-weight: 700; font-size: 1.8rem; }
+        .price-row.total { margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--text-headers); color: var(--text-headers); font-weight: 700; font-size: 1.8rem; letter-spacing: -0.5px; }
+        .payment-plan { margin-top: 20px; font-size: 0.85rem; color: var(--text-body); border-top: 1px dashed var(--border); padding-top: 15px; text-align: left; }
 
-        /* ================= DISCLAIMERS & FOOTER ================= */
+        /* ================= INFO BOX (DISCLAIMERS) ================= */
         .info-box { background: var(--bg-white); border: 1px solid var(--border); border-left: 4px solid var(--text-headers); padding: 30px; border-radius: 8px; }
         footer { background: var(--bg-base); padding: 40px 10%; text-align: center; border-top: 1px solid var(--border); color: var(--text-headers); display: flex; flex-direction: column; align-items: center; gap: 5px; }
         .footer-contact { font-size: 0.95rem; font-weight: 600; color: var(--text-headers); }
@@ -472,8 +497,37 @@
                     </div>
                 </div>
                 <div class="payment-plan">
-                    <span class="lang en"><strong>Maintenance Plan:</strong> Billed monthly in arrears.</span>
-                    <span class="lang es hidden"><strong>Plan de Mantenimiento:</strong> Facturado a mes vencido.</span>
+                    <span class="lang en"><strong>Maintenance Plan:</strong> Billed monthly for 4 months, during the last week of the month. If the Google Ads campaign extends into a 5th month to utilize credit, campaign monitoring continues at no extra cost, but other services (Web, GMB, PR) conclude at month 4.</span>
+                    <span class="lang es hidden"><strong>Plan de Mantenimiento:</strong> Facturado a mes vencido durante 4 meses (última semana del mes). Si la campaña de Google se extiende a un 5º mes para agotar el crédito, el seguimiento de la campaña continúa sin coste extra, pero el resto de servicios (Web, GMB, PR) finalizan en el mes 4.</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 80px; padding-top: 60px; border-top: 1px solid var(--border);">
+            <h3 style="color: var(--text-headers); font-family: 'Poppins', sans-serif; font-size: 1.8rem; margin-bottom: 30px;">
+                <span class="lang en">Possible Add-ons</span>
+                <span class="lang es hidden">Funcionalidades Opcionales Futuras (Add-ons)</span>
+            </h3>
+            <div class="grid-container">
+                <div class="addon-card hover-3d">
+                    <h4>
+                        <span class="lang en">Monthly Blog</span>
+                        <span class="lang es hidden">Blog Mensual</span>
+                    </h4>
+                    <p>
+                        <span class="lang en">1 SEO-optimized blog article per month focusing on wellness, movement, and lifestyle to increase organic traffic.</span>
+                        <span class="lang es hidden">1 artículo de blog mensual optimizado para SEO, centrado en bienestar, movimiento y estilo de vida para aumentar el tráfico orgánico.</span>
+                    </p>
+                </div>
+                <div class="addon-card hover-3d">
+                    <h4>
+                        <span class="lang en">Monthly Newsletter</span>
+                        <span class="lang es hidden">Newsletter Mensual</span>
+                    </h4>
+                    <p>
+                        <span class="lang en">1 curated email newsletter per month to engage your community and keep members updated on new events, classes, and promos.</span>
+                        <span class="lang es hidden">1 newsletter mensual por correo para fidelizar a la comunidad y mantener a los miembros informados sobre nuevos eventos, clases y promociones.</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -487,18 +541,18 @@
             <ul class="custom-list" style="margin-bottom: 0;">
                 <li>
                     <strong style="color: var(--text-headers);"><span class="lang en">Ad Spend Excluded:</span><span class="lang es hidden">Inversión Publicitaria Excluida:</span></strong> 
-                    <span class="lang en">Direct investment in Google Ads is billed directly by Google to the client's payment method.</span>
-                    <span class="lang es hidden">La inversión directa en Google Ads se factura directamente por Google al método de pago del cliente.</span>
+                    <span class="lang en">This proposal covers agency management fees. Direct investment in Google Ads is billed directly by Google to the client's payment method.</span>
+                    <span class="lang es hidden">Esta propuesta cubre los honorarios de gestión de agencia. La inversión directa en Google Ads se factura directamente por Google al método de pago del cliente.</span>
                 </li>
                 <li>
                     <strong style="color: var(--text-headers);"><span class="lang en">Third-Party Costs:</span><span class="lang es hidden">Costes de Terceros:</span></strong> 
-                    <span class="lang en">Any third-party costs (servers, external tools, domains) are not included.</span>
-                    <span class="lang es hidden">Cualquier coste de terceros (servidores, herramientas externas, dominios) no está incluido.</span>
+                    <span class="lang en">Any third-party costs (servers, external tools, domains) are not included and are borne by the client.</span>
+                    <span class="lang es hidden">Cualquier coste de terceros (servidores, herramientas externas, dominios) no está incluido y corre a cargo del cliente.</span>
                 </li>
                 <li>
                     <strong style="color: var(--text-headers);"><span class="lang en">Campaign Flexibility:</span><span class="lang es hidden">Flexibilidad de Campañas:</span></strong> 
-                    <span class="lang en">The timeline is subject to Google's promo validation and our chosen daily spend strategy (typically starting at 5€/day and scaling once winners are found). We charge a strict 4 months of maintenance, even if campaigns extend to 5 months to utilize the full ad credit.</span>
-                    <span class="lang es hidden">El cronograma está sujeto a la validación de Google y a la estrategia de gasto diario (normalmente 5€/día iniciales escalando al encontrar ganadores). Cobramos estrictamente 4 meses, incluso si la campaña se extiende a 5 meses para usar el crédito completo.</span>
+                    <span class="lang en">The timeline is subject to Google's promo validation periods and our chosen daily spend strategy. We typically start with a minimum of 5€/day to test campaigns and segments; once winning combinations are found, we scale the daily spend. We charge a strict 4 months of maintenance, even if campaigns extend to 5 or 6 months to utilize the full ad credit.</span>
+                    <span class="lang es hidden">El cronograma está sujeto a los periodos de validación de Google y a la estrategia de gasto diario elegida. Normalmente empezamos con un mínimo de 5€ diarios para testear campañas y segmentos; una vez que encontramos combinaciones ganadoras, escalamos el gasto. Cobramos estrictamente 4 meses de mantenimiento, incluso si el tiempo de campaña se extiende a 5 o 6 meses para utilizar todo el crédito.</span>
                 </li>
                 <li>
                     <strong style="color: var(--text-headers);"><span class="lang en">Privacy & Cookies:</span><span class="lang es hidden">Privacidad y Cookies:</span></strong> 
