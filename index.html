@@ -88,7 +88,7 @@
         .mobile-menu.open { right: 0; }
         .close-menu { position: absolute; top: 20px; left: 5%; font-size: 2.5rem; color: var(--text-headers); background: none; border: none; cursor: pointer; }
 
-        /* ================= HERO ================= */
+        /* ================= HERO (Group Centered) ================= */
         .hero { 
             background: var(--bg-white); 
             padding: 80px 5%; 
@@ -140,6 +140,69 @@
         .scope-card.highlight ul { display: inline-block; text-align: left; margin: 0 auto; max-width: 800px;}
         .scope-card.highlight h3 { text-align: center; }
         .scope-card.highlight .ul-wrapper { text-align: center; }
+
+        /* ================= PIE CHART SECTION ================= */
+        .pie-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 100px;
+            flex-wrap: wrap;
+        }
+        .pie-svg-wrapper {
+            position: relative;
+            width: 380px;
+            height: 380px;
+        }
+        .pie-chart {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .pie-slice {
+            transform-origin: 50px 50px;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+            cursor: pointer;
+            stroke: var(--bg-white);
+            stroke-width: 0.5px;
+        }
+        .pie-slice:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 10px 20px rgba(38, 21, 14, 0.15));
+            z-index: 10;
+        }
+        .pie-legend {
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+        .pie-legend ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+        .pie-legend li { display: flex; align-items: center; gap: 15px; font-size: 1.1rem; color: var(--text-headers); font-weight: 500; font-family: 'Poppins', sans-serif; transition: transform 0.2s ease;}
+        .pie-legend li:hover { transform: translateX(5px); }
+        .legend-color { width: 24px; height: 24px; border-radius: 6px; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+        
+        .pie-tooltip {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255,255,255,0.95);
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(38, 21, 14, 0.12);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--accent);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            text-align: center;
+            white-space: nowrap;
+            z-index: 10;
+            border: 1px solid var(--border);
+        }
 
         /* ================= ADD-ONS ================= */
         .addon-card {
@@ -213,6 +276,7 @@
             .time-block { border-top: none; border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; }
             .budget-card { align-items: stretch; text-align: left; }
             .price-row.total { font-size: 1.6rem; gap: 10px;}
+            .pie-container { gap: 40px; }
         }
     </style>
 </head>
@@ -229,7 +293,7 @@
                     <ul>
                         <li><a href="#overview"><span class="lang en">Overview</span><span class="lang es hidden">Resumen</span></a></li>
                         <li><a href="#setup"><span class="lang en">SEM Setup</span><span class="lang es hidden">Setup SEM</span></a></li>
-                        <li><a href="#maintenance"><span class="lang en">Retainer</span><span class="lang es hidden">Retainer</span></a></li>
+                        <li><a href="#maintenance"><span class="lang en">Marketing</span><span class="lang es hidden">Marketing</span></a></li>
                     </ul>
                 </nav>
                 <div class="lang-switch">
@@ -253,7 +317,7 @@
             <ul>
                 <li><a href="#overview" class="mobile-link"><span class="lang en">Overview</span><span class="lang es hidden">Resumen</span></a></li>
                 <li><a href="#setup" class="mobile-link"><span class="lang en">SEM Setup</span><span class="lang es hidden">Setup SEM</span></a></li>
-                <li><a href="#maintenance" class="mobile-link"><span class="lang en">Retainer</span><span class="lang es hidden">Retainer</span></a></li>
+                <li><a href="#maintenance" class="mobile-link"><span class="lang en">Marketing</span><span class="lang es hidden">Marketing</span></a></li>
             </ul>
         </nav>
         <div class="lang-switch">
@@ -364,7 +428,7 @@
 
     <section id="maintenance" class="fade-in-up">
         <div class="section-header">
-            <h2><span class="lang en">SEM Campaigns & Web Retainer</span><span class="lang es hidden">Campañas SEM y Retainer Web</span></h2>
+            <h2><span class="lang en">Monthly Marketing Efforts</span><span class="lang es hidden">Esfuerzos de Marketing Mensuales</span></h2>
             <p>
                 <span class="lang en">The Growth Engine. A detailed monthly scope covering ongoing SEM optimization, web updates, tracking, GMB/Google Maps management, and backlinks for local digital PR.</span>
                 <span class="lang es hidden">El Motor de Crecimiento. Un alcance mensual detallado que cubre optimización SEM continua, actualizaciones web, tracking, gestión de GMB/Google Maps, y backlinks para PR digital local.</span>
@@ -431,7 +495,7 @@
         </div>
 
         <div class="timeline-wrapper">
-            <h3><span class="lang en">SEM Timeline (4/5 Months)</span><span class="lang es hidden">Cronograma SEM (4/5 Meses)</span></h3>
+            <h3><span class="lang en">Marketing Timeline (4/5 Months)</span><span class="lang es hidden">Cronograma de Marketing (4/5 Meses)</span></h3>
             <div class="timeline-disclaimer">
                 <span class="lang en">Note: Depending on <a href="https://business.google.com/es/google-ads/" target="_blank" style="color: #0000EE; text-decoration: underline;">Google credit</a> validation and factors such as daily spend adjustments, the timeline will take 4 or 5 months, but fees are strictly capped at the 4 budgeted months.</span>
                 <span class="lang es hidden">Nota: Dependiendo de la validación del <a href="https://business.google.com/es/google-ads/" target="_blank" style="color: #0000EE; text-decoration: underline;">crédito de Google</a> y factores como los cambios en el gasto diario, el proceso durará 4 o 5 meses, pero los honorarios se mantienen cerrados a los 4 meses presupuestados.</span>
@@ -476,7 +540,8 @@
                 <ul class="custom-list">
                     <li><span class="lang en"><strong>SEM Maintenance:</strong> Bid strategy, Ad copies, log doc.</span><span class="lang es hidden"><strong>Mantenimiento SEM:</strong> Estrategia pujas, Ad copies, log doc.</span></li>
                     <li><span class="lang en"><strong>Web Development:</strong> 10h for popups, minor fixes, events.</span><span class="lang es hidden"><strong>Desarrollo Web:</strong> 10h para popups, arreglos menores, eventos.</span></li>
-                    <li><span class="lang en"><strong>GMB & Local PR:</strong> 3-5 backlinks, 2-3 GMB posts & review management.</span><span class="lang es hidden"><strong>GMB y PR Local:</strong> 3-5 backlinks, 2-3 posts GMB y gestión reseñas.</span></li>
+                    <li><span class="lang en"><strong>Google My Business/Maps:</strong> 2-3 posts, image/teacher updates, and review management.</span><span class="lang es hidden"><strong>Google My Business/Maps:</strong> 2-3 posts, actualización fotos/profesores y gestión de reseñas.</span></li>
+                    <li><span class="lang en"><strong>Local PR & Backlinks:</strong> 3-5 backlinks acquired from local press and DA tracking.</span><span class="lang es hidden"><strong>PR Local y Backlinks:</strong> 3-5 backlinks de prensa local y tracking de DA.</span></li>
                     <li><span class="lang en"><strong>Monthly Reporting:</strong> Funnel tracking, ROI measurement and data insights.</span><span class="lang es hidden"><strong>Reportes Mensuales:</strong> Tracking funnel, medición ROI e insights.</span></li>
                 </ul>
             </div>
@@ -503,7 +568,40 @@
             </div>
         </div>
 
-        <div style="margin-top: 80px; padding-top: 60px; border-top: 1px solid var(--border);">
+        <div style="margin-top: 120px; padding-top: 80px; border-top: 1px solid var(--border);" class="fade-in-up">
+            <div class="section-header" style="text-align: center; margin: 0 auto 60px auto;">
+                <h2><span class="lang en">Resource Allocation Focus</span><span class="lang es hidden">Enfoque de Asignación de Recursos</span></h2>
+                <p>
+                    <span class="lang en">A visual breakdown of our monthly strategic marketing efforts and dedicated bandwidth.</span>
+                    <span class="lang es hidden">Un desglose visual de nuestros esfuerzos estratégicos mensuales y dedicación de recursos.</span>
+                </p>
+            </div>
+            
+            <div class="pie-container">
+                <div class="pie-svg-wrapper">
+                    <svg viewBox="0 0 100 100" class="pie-chart">
+                        <path d="M 50 50 L 50 0 A 50 50 0 0 1 95.75 70.05 Z" fill="#7d0038" class="pie-slice" data-name="SEM Maintenance"></path>
+                        <path d="M 50 50 L 95.75 70.05 A 50 50 0 0 1 26.20 93.95 Z" fill="#a82b54" class="pie-slice" data-name="Web Development"></path>
+                        <path d="M 50 50 L 26.20 93.95 A 50 50 0 0 1 1.55 37.75 Z" fill="#d15c7a" class="pie-slice" data-name="Analytics, Reports & Insights"></path>
+                        <path d="M 50 50 L 1.55 37.75 A 50 50 0 0 1 19.30 10.55 Z" fill="#26150E" class="pie-slice" data-name="Backlinks & Local PR"></path>
+                        <path d="M 50 50 L 19.30 10.55 A 50 50 0 0 1 50 0 Z" fill="#d4b59d" class="pie-slice" data-name="Google My Business/Maps"></path>
+                    </svg>
+                    <div class="pie-tooltip" id="pie-tooltip"></div>
+                </div>
+                
+                <div class="pie-legend">
+                    <ul>
+                        <li><span class="legend-color" style="background: #7d0038;"></span> <span class="lang en">SEM Maintenance</span><span class="lang es hidden">Mantenimiento SEM</span></li>
+                        <li><span class="legend-color" style="background: #a82b54;"></span> <span class="lang en">Web Development</span><span class="lang es hidden">Desarrollo Web</span></li>
+                        <li><span class="legend-color" style="background: #d15c7a;"></span> <span class="lang en">Analytics, Reports & Insights</span><span class="lang es hidden">Analítica, Reportes e Insights</span></li>
+                        <li><span class="legend-color" style="background: #26150E;"></span> <span class="lang en">Backlinks & Local PR</span><span class="lang es hidden">Backlinks y PR Local</span></li>
+                        <li><span class="legend-color" style="background: #d4b59d;"></span> <span class="lang en">Google My Business/Maps</span><span class="lang es hidden">Google My Business/Maps</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 120px; padding-top: 80px; border-top: 1px solid var(--border);" class="fade-in-up">
             <h3 style="color: var(--text-headers); font-family: 'Poppins', sans-serif; font-size: 1.8rem; margin-bottom: 30px;">
                 <span class="lang en">Possible Add-ons</span>
                 <span class="lang es hidden">Funcionalidades Opcionales Futuras (Add-ons)</span>
@@ -577,6 +675,7 @@
     </footer>
 
     <script>
+        // Language Toggle Logic
         function setLang(lang) {
             document.getElementById('btn-en-desktop').classList.toggle('active', lang === 'en');
             document.getElementById('btn-es-desktop').classList.toggle('active', lang === 'es');
@@ -585,6 +684,7 @@
             document.querySelectorAll('.lang').forEach(el => el.classList.toggle('hidden', !el.classList.contains(lang)));
         }
 
+        // Mobile Menu Logic
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const closeMenuBtn = document.getElementById('close-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -593,10 +693,25 @@
         closeMenuBtn.addEventListener('click', () => { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; });
         document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }));
 
+        // Scroll Animations (Intersection Observer)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in-up').forEach(element => observer.observe(element));
+
+        // Pie Chart Tooltip Logic
+        const slices = document.querySelectorAll('.pie-slice');
+        const tooltip = document.getElementById('pie-tooltip');
+
+        slices.forEach(slice => {
+            slice.addEventListener('mouseenter', (e) => {
+                tooltip.textContent = e.target.getAttribute('data-name');
+                tooltip.style.opacity = '1';
+            });
+            slice.addEventListener('mouseleave', () => {
+                tooltip.style.opacity = '0';
+            });
+        });
     </script>
 </body>
 </html>
