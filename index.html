@@ -177,10 +177,40 @@
             border-radius: 12px;
             border: 1px solid var(--border);
             box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            min-width: 400px;
         }
-        .pie-legend ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 18px; }
-        .pie-legend li { display: flex; align-items: center; gap: 15px; font-size: 1.1rem; color: var(--text-headers); font-weight: 500; font-family: 'Poppins', sans-serif; transition: transform 0.2s ease;}
-        .pie-legend li:hover { transform: translateX(5px); }
+        .pie-legend table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .pie-legend tr {
+            transition: transform 0.2s ease;
+            border-bottom: 1px solid var(--border);
+        }
+        .pie-legend tr:last-child {
+            border-bottom: none;
+        }
+        .pie-legend tr:hover {
+            transform: translateX(5px);
+        }
+        .pie-legend td {
+            padding: 18px 0;
+            font-size: 1.1rem;
+            color: var(--text-headers);
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+        }
+        .pie-legend td.label-col {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .pie-legend td.price-col {
+            text-align: right;
+            font-weight: 600;
+            color: var(--text-body);
+            padding-left: 20px;
+        }
         .legend-color { width: 24px; height: 24px; border-radius: 6px; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
         
         .pie-tooltip {
@@ -277,6 +307,7 @@
             .budget-card { align-items: stretch; text-align: left; }
             .price-row.total { font-size: 1.6rem; gap: 10px;}
             .pie-container { gap: 40px; }
+            .pie-legend { min-width: 100%; padding: 25px 20px; }
         }
     </style>
 </head>
@@ -457,7 +488,7 @@
                     <li><span class="lang en">Web updates (images, videos, text, popups)</span><span class="lang es hidden">Actualizaciones web (imágenes, videos, textos, popups)</span></li>
                     <li><span class="lang en">Adding/Changing events, promos, classes, prices, and teachers</span><span class="lang es hidden">Añadir/Cambiar eventos, promos, clases, precios y profesores</span></li>
                     <li><span class="lang en">Dedicated SOHO House & Madrid web updates</span><span class="lang es hidden">Actualizaciones web dedicadas de SOHO House y Madrid</span></li>
-                    <li><span class="lang en">Quick minor changes and fixes (enhancements)</span><span class="lang es hidden">Arreglos y cambios menores rápidos (mejoras)</span></li>
+                    <li><span class="lang en">Monthly web clean up, enhancements and performance optimization</span><span class="lang es hidden">Limpieza web mensual, mejoras y optimización de rendimiento</span></li>
                     <li><span class="lang en"><em>Note: New web sections/pages are not in budget</em></span><span class="lang es hidden"><em>Nota: Secciones web nuevas quedan fuera del presupuesto</em></span></li>
                 </ul>
             </div>
@@ -590,13 +621,45 @@
                 </div>
                 
                 <div class="pie-legend">
-                    <ul>
-                        <li><span class="legend-color" style="background: #7d0038;"></span> <span class="lang en">SEM Maintenance</span><span class="lang es hidden">Mantenimiento SEM</span></li>
-                        <li><span class="legend-color" style="background: #a82b54;"></span> <span class="lang en">Web Development</span><span class="lang es hidden">Desarrollo Web</span></li>
-                        <li><span class="legend-color" style="background: #d15c7a;"></span> <span class="lang en">Analytics, Reports & Insights</span><span class="lang es hidden">Analítica, Reportes e Insights</span></li>
-                        <li><span class="legend-color" style="background: #26150E;"></span> <span class="lang en">Backlinks & Local PR</span><span class="lang es hidden">Backlinks y PR Local</span></li>
-                        <li><span class="legend-color" style="background: #d4b59d;"></span> <span class="lang en">Google My Business/Maps</span><span class="lang es hidden">Google My Business/Maps</span></li>
-                    </ul>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="label-col">
+                                    <span class="legend-color" style="background: #7d0038;"></span> 
+                                    <span><span class="lang en">SEM Maintenance</span><span class="lang es hidden">Mantenimiento SEM</span></span>
+                                </td>
+                                <td class="price-col">350€</td>
+                            </tr>
+                            <tr>
+                                <td class="label-col">
+                                    <span class="legend-color" style="background: #a82b54;"></span> 
+                                    <span><span class="lang en">Web Development</span><span class="lang es hidden">Desarrollo Web</span></span>
+                                </td>
+                                <td class="price-col">300€</td>
+                            </tr>
+                            <tr>
+                                <td class="label-col">
+                                    <span class="legend-color" style="background: #d15c7a;"></span> 
+                                    <span><span class="lang en">Analytics, Reports & Insights</span><span class="lang es hidden">Analítica, Reportes e Insights</span></span>
+                                </td>
+                                <td class="price-col">200€</td>
+                            </tr>
+                            <tr>
+                                <td class="label-col">
+                                    <span class="legend-color" style="background: #26150E;"></span> 
+                                    <span><span class="lang en">Backlinks & Local PR</span><span class="lang es hidden">Backlinks y PR Local</span></span>
+                                </td>
+                                <td class="price-col">125€</td>
+                            </tr>
+                            <tr>
+                                <td class="label-col">
+                                    <span class="legend-color" style="background: #d4b59d;"></span> 
+                                    <span><span class="lang en">Google My Business/Maps</span><span class="lang es hidden">Google My Business/Maps</span></span>
+                                </td>
+                                <td class="price-col">125€</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
